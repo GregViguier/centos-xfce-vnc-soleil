@@ -1,0 +1,11 @@
+#Constant Q simulation
+#Fri Sep 01 14:50:17 CEST 2017
+Q_count=6
+Q_visible=true
+Q_1=1.9293
+Q_2=2.2277
+Q_3=3.1505
+Q_4=3.6944
+Q_5=3.8587
+Q_6=4.4555
+Q_delta=0.03000

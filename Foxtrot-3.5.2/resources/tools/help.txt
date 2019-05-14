@@ -1,0 +1,87 @@
+Put in this folder the external worker your image reduction application should be able to launch.
+These external worker will be available in your application from the menu "Tools/Run executor".
+
+As described in Jira DATAREDUC-360, an external worker is a runnable, which has a .properties file in the same folder, that has the same name (except for extension).
+For example : "run.sh" is a linux external worker if there is a "run.properties" file in the same folder.
+
+Here is a reminder of what the .properties file should contain:
+
+1) properties format reminder:
+A .properties file is a text file, each line of which indicating "key = value".
+
+2) Recognized keys :
+- description = Some text to describe what the runnable does
+- argument.count = integer (number of arguments expected by the runnable)
+- argument.i = optional (indicates the ith (1 <= i <= count) is optional.
+- argument.i.name = name of the ith argument
+- argument.i.description = Some text describing the ith argument
+- argument.i.type = type of the ith argument (possible values: string, number, int, boolean, file, folder, path, uri, index, indexes)
+- argument.i.range = range of the ith argument (only for number and int arguments)
+
+3) Possible types explanation:
+- string: A string.
+- number: Un number (float or integer).
+- int: An integer.
+- boolean: A boolean.
+- file: Path to a file (not a folder).
+- folder: Path to a folder.
+- path: Path to a folder or a file.
+- uri: The string representation of an URI
+- index: The index of 1 image. If the image stack is 1D, the index can be spelled {idx} or idx. If the stack is ND, the index must be spelled {idx1, ..., idxn}
+- indexes: A set of indexes. It is a list of indexes, using ; as separator (idx1; ...; idxn), and that may include index ranges.
+           An index range is spelled [idx1-idxn]. A step can be specified that way: [idx1-idxn:step], where step is an integer >= 1.
+Example: {0,0}; {0,7}; [{0,15}-{5,3}]; {7,0}; [{8,1}-{9,2}:3]
+
+4) Range (argument.i.range) explanation:
+ranges are used to limit the possible values of a number or int argument.
+The value is expected to be a mathematical interval, the limits of which can be included or excluded.
+If there should be no upper limit, then the upper limit should be replaced by +Infinity or Infinity.
+If there should be no lower limit, then the lower limit should be replaced by -Infinity.
+Here is an example of ranged arguments:
+argument.count = 5
+argument.1.name = arg1
+argument.1.type = int
+argument.1.range = [0, 10]
+argument.2.name = arg2
+argument.2.type = int
+argument.2.range = ]-5, Infinity]
+argument.3.name = arg3
+argument.3.type = number
+argument.3.range = ]0.75, Infinity[
+argument.4.name = arg4
+argument.4.type = number
+argument.4.range = [-5, 1.7[
+argument.5.name = arg5
+argument.5.type = number
+argument.5.range = [-Infinity, -10[
+
+5) Dynamic arguments management:
+Sometimes, your runnable will manage dynamic arguments, following some pattern.
+To make sure your image reduction application will be able to manage this, you should describe the dynamic arguments pattern in argument count :
+argument.count = n (number of fixed arguments) + m dynamic (if m = 1, then m est optional).
+If n = 0 and m is defined, then n is optional.
+
+Examples of dynamic arguments declarations:
+argument.count = dynamic
+argument.count = 5 + 3 dynamic
+argument.count = 4 + dynamic
+
+The logic is then following one:
+- argument.i = ith fixed argument
+- argument.dynamic.i = ith dynamic argument (1 <= i <= m)
+
+If your dynamic arguments should be surrounded with a customized title in your image reduction application, use argument.dynamic.name
+Example: argument.dynamic.name = Images to sum
+
+Example of dynamic arguments declaration in properties file:
+description = runnable able to mean images of different files
+argument.count = 1 + 2 dynamic
+argument.1.name = output folder
+argument.1.description = Path of the folder in which the average file will be produced
+argument.1.type = folder
+argument.dynamic.1.name = image file
+argument.dynamic.1.description = file containing images
+argument.dynamic.1.type = file
+argument.dynamic.2.name = image indexes
+argument.dynamic.2.description = indexes of the images to average in the file
+argument.dynamic.2.type = indexes

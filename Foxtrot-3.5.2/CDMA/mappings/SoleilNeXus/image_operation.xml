@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map-def SYSTEM "../../dtd/mapping_file.dtd">
+<map-def name="image_operation" version="1.0.0">
+  <item key="acquisition_sequence">
+    <path>/{NXinstrument}/scanName</path>
+  </item>
+  <item key="acquisition_origin">
+    <path>/{NXinstrument}/scanOrigin</path>
+  </item>
+  <item key="camera">
+    <path>/{NXinstrument}/{NXdetector}/camera</path>
+    <attribute name="acquisition_sequence">
+      <path>/{NXinstrument}/scanName</path>
+    </attribute>
+    <attribute name="equipment">
+      <path>/{NXinstrument}/{NXdetector}/camera</path>
+    </attribute>
+    <attribute name="region">
+      <path>/{NXinstrument}/{NXdetector}/region</path>
+    </attribute>
+  </item>
+  <item key="xBin">
+    <path>/{NXinstrument}/xbin</path>
+    <call>HarvestEquipmentAttributes</call>
+    <attribute name="equipment">
+      <path>/{NXinstrument}/{NXdetector}/camera</path>
+    </attribute>
+  </item>
+  <item key="zBin">
+    <path>/{NXinstrument}/zbin</path>
+    <call>HarvestEquipmentAttributes</call>
+    <attribute name="equipment">
+      <path>/{NXinstrument}/{NXdetector}/camera</path>
+    </attribute>
+  </item>
+  <item key="detectorBias">
+    <path>/{NXinstrument}/detectorBias</path>
+    <call>HarvestEquipmentAttributes</call>
+    <attribute name="equipment">
+      <path>/{NXinstrument}/{NXdetector}/camera</path>
+    </attribute>
+  </item>
+  <item key="detectorGain">
+    <path>/{NXinstrument}/detectorGain</path>
+    <call>HarvestEquipmentAttributes</call>
+    <attribute name="equipment">
+      <path>/{NXinstrument}/{NXdetector}/camera</path>
+    </attribute>
+  </item>
+  <item key="detectorBasedUncertainty">
+    <path>/{NXinstrument}/detectorBasedUncertainty</path>
+    <call>HarvestEquipmentAttributes</call>
+    <attribute name="equipment">
+      <path>/{NXinstrument}/{NXdetector}/camera</path>
+    </attribute>
+  </item>
+  <item key="exposureTime">
+    <path>/{NXinstrument}/exposureTime</path>
+    <call>HarvestEquipmentAttributes</call>
+    <attribute name="equipment">
+      <path>/{NXinstrument}/{NXdetector}/camera</path>
+    </attribute>
+  </item>
+  <item key="shutterCloseDelay">
+    <path>/{NXinstrument}/shutterCloseDelay</path>
+    <call>HarvestEquipmentAttributes</call>
+    <attribute name="equipment">
+      <path>/{NXinstrument}/{NXdetector}/camera</path>
+    </attribute>
+  </item>
+  <item key="distance">
+    <path>/{NXinstrument}/distance</path>
+    <call>HarvestEquipmentAttributes</call>
+    <attribute name="equipment">
+      <path>/{NXinstrument}/{NXdetector}/camera</path>
+    </attribute>
+  </item>
+  <item key="pixelSize">
+    <path>/{NXinstrument}/pixelSize</path>
+    <call>HarvestEquipmentAttributes</call>
+    <attribute name="equipment">
+      <path>/{NXinstrument}/{NXdetector}/camera</path>
+    </attribute>
+  </item>
+  <item key="mi">
+    <path>/{NXinstrument}/{NXintensity_monitor}</path>
+    <call>CreateVirtualItem</call>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="gain">
+    <path>/{NXinstrument}/{NXintensity_monitor}/gain</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="bias">
+    <path>/{NXinstrument}/{NXintensity_monitor}/bias/data</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="intensity">
+    <path>/{NXinstrument}/{NXintensity_monitor}/intensity</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="dark">
+    <path>/{NXinstrument}/dark</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="energyScale">
+    <path>/{NXinstrument}/energyScale</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="sliceScale">
+    <path>/{NXinstrument}/sliceScale</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="x0">
+    <path>/{NXinstrument}/x0</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="z0">
+    <path>/{NXinstrument}/z0</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="z0">
+    <path>/{NXinstrument}/z0</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="xPositions">
+    <path>/{NXinstrument}/xPositions</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="zPositions">
+    <path>/{NXinstrument}/zPositions</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="sweeps">
+    <path>/{NXinstrument}/sweeps</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="acquisitionMode">
+    <path>/{NXinstrument}/acquisitionMode</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="lensMode">
+    <path>/{NXinstrument}/lensMode</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="passEnergy">
+    <path>/{NXinstrument}/passEnergy</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="lowEnergy">
+    <path>/{NXinstrument}/lowEnergy</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="highEnergy">
+    <path>/{NXinstrument}/highEnergy</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="energyStep">
+    <path>/{NXinstrument}/energyStep</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="stepTime">
+    <path>/{NXinstrument}/stepTime</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="firstXChannel">
+    <path>/{NXinstrument}/firstXChannel</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="lastXChannel">
+    <path>/{NXinstrument}/lastXChannel</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="firstZChannel">
+    <path>/{NXinstrument}/firstZChannel</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="lastZChannel">
+    <path>/{NXinstrument}/lastZChannel</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="slices">
+    <path>/{NXinstrument}/slices</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="encoderDelta">
+    <path>/{NXinstrument}/encoderDelta</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="delta0">
+    <path>/{NXinstrument}/delta0</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="gamma0">
+    <path>/{NXinstrument}/gamma0</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="energy">
+    <path>/{NXinstrument}/energy</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="lambda">
+    <path>/{NXinstrument}/lambda</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="beamEnergy">
+    <path>/{NXinstrument}/beamEnergy</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="exitSlits">
+    <path>/{NXinstrument}/exitSlits</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="x_position">
+    <path>/{NXinstrument}/xPositions</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="images">
+    <!-- the core will try to open that path, but won't succeed -->
+    <path>/{NXdata}/image*@interpretation=image</path>
+    <!-- that method will get the previous path from context, will split the attribute section from the 
+      path to filter on that attribute name and value -->
+    <call>AttributeFilter</call>
+  </item>
+  <item key="scalars">
+    <!-- the core will try to open that path, but won't succeed -->
+    <path>/{NXdata}/scalar*@interpretation=scalar</path>
+    <!-- that method will get the previous path from context, will split the attribute section from the 
+      path to filter on that attribute name and value -->
+    <call>AttributeFilter</call>
+  </item>
+  <item key="comments">
+    <path>/{NXinstrument}/comments</path>
+  </item>
+  <item key="namedData">
+    <!-- the core will try to open that path, but won't succeed -->
+    <path>/result{NXdata}/*@interpretation=scalar</path>
+    <!-- that method will get the previous path from context, will split the attribute section from the 
+      path to filter on that attribute name and value -->
+    <call>AttributeFilter</call>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+</map-def>

@@ -1,0 +1,671 @@
+-------------------------------------------
+ Foxtrot RELEASE NOTES
+-------------------------------------------
+
+Format:
+================================
+Version (Date)
+================================
+ - SOLEIL Jira reference(s): description
+
+-------------------------------------------
+
+
+================================
+3.5.2-3645 (February 2019)
+================================
+- DATAREDUC-845: Improvement of CAHPLCSample algorithm
+- DATAREDUC-852: Bug fix: Filtered Input are not extracted for new CA
+- DATAREDUC-843: Import speed improvement
+- DATAREDUC-797, DATAREDUC-860: Load ctx data file in macro
+- DATAREDUC-861: Missing paths in last used paths file
+- DATAREDUC-859: Bug fix: Calibration process regression + remove automatic override
+- DATAREDUC-855: Bug fix: Importation of foxtrot output files is not working
+- DATAREDUC-848: Make autoQRange option of CAHPLCSample user macro compatible with defaultUserMacro file
+- DATAREDUC-841: Bug fix: Foxtrot too slow with nexus files in multi threads mode.
+- DATAREDUC-847: Bug fix: Missing chart formulas
+- DATAREDUC-848: Add autoQRange in CAHPLCSample preferences
+- DATAREDUC-849: Add hkl files in Foxtrot distribution
+- DATAREDUC-853: Bug fix: Used memory not perfectly cleaned
+- DATAREDUC-819: Bug fix: Waiting dialog during export disappeared, though export was still going on)
+- DATAREDUC-858: Add some persisting data in Foxtrot dictionaries
+- DATAREDUC-862: Foxtrot properties files content updated
+
+================================
+3.5.1-3613 (December 2018)
+================================
+- DATAREDUC-801: Dynamic center for sector calculation
+- Bug fix: Data export bug due to undesired commit
+
+================================
+3.5.0-3606 (November 2018)
+================================
+- DATAREDUC-797: Load of context data file in macro
+- DATAREDUC-822: Remember last used paths
+- DATAREDUC-799: Add new "Divide" userMacro
+- DATAREDUC-813: Bug fix: Sigma calculation not saved for LinearFunction macro
+- DATAREDUC-823: Alternative sigma calculation in circleGathering
+- JAVAAPI-440: Bug fix: Intensity monitor reading error due to NullPointerException
+- DATAREDUC-790: Real export of angular sector parameters
+- DATAREDUC-839: Bug fix: Extraction misses some files
+- DATAREDUC-724: Change clever average criteria
+- JAVAAPI-456: Add the possibility to customize curves number format in chart
+- DATAREDUC-752: Extraction takes too much time
+- DATAREDUC-806: Change "show selected data" icon
+- DATAREDUC-719, DATAREDUC-676: CleverAverage5: generate fit results
+- DATAREDUC-821: Change I0_ref selection algorithm in clever average 5 bis
+- DATAREDUC-826: Bug fix: Import failed
+
+================================
+3.4.9-3471 (April 2018)
+================================
+- DATAREDUC-788: Freeze of Foxtrot with long path in Edit Directory
+- DATAREDUC-789: Add the possibility to hide Set Input button in new Sum userMacro
+- DATAREDUC-787: Wrong context data transmission in Azimuthal Integration
+- CleverAverage5 compatibility ensured in python extractor
+
+================================
+3.4.8-3447 (February 2018)
+================================
+- DATAREDUC-776: Context data format after calibration
+- DATAREDUC-777: SumSpectra macro full java implementation
+- DATAREDUC-778: MergeOnQ_NoResampling failed to execute
+- DATAREDUC-781: Better NaN management in projections
+- DATAREDUC-782: Keep mono-thread mode by default for xenocs version
+- DATAREDUC-768: Persisting data format management.
+  For this case, you should setup a "format" attribute at the end of the key mapping in the mapping dictionary.
+  You should use, as value "%.Xf" for float format or "%.Xe" for scientific format, where "X" is the desired number of decimal digits.
+  Example in a nexus mapping dictionary:
+  <item key="MyData">
+    <path>/{NXdata}/my_data</path>
+    <call>HarvestEquipmentAttributes</call>
+    <attribute name="format" value="%.3f"/>
+  </item>
+- DATAREDUC-770: Persisting data randomly not displayed in fit table
+- DATAREDUC-772: Indicate which plugin is not multi-threads compatible
+- DATAREDUC-779: Block Azimuthal Integration for pixelStepValue !=1
+
+
+================================
+3.4.7-3399 (February 2018)
+================================
+- DATAREDUC-756: Change calibration highlight color
+- DATAREDUC-765: Change default value for initial guesses in calibration
+- DATAREDUC-745: Color scale is lost sometimes
+- Calibration highlighting bug correction (wrong delta recovering for highlighted pixels: calibration was OK but not the highlighting)
+
+
+================================
+3.4.6-3390 (February 2018)
+================================
+- DATAREDUC-726: Precision step in Azimuthal Integration
+- DATAREDUC-727: Bug fix: Projection failed
+- DATAREDUC-737: Bug fix: Quadratic relative difference of calibration not refreshed
+- DATAREDUC-738: Bug fix: Wrong parameters in Azimuthal Integration
+- DATAREDUC-750: Bug fix: Missing pixelSplitting and xValuesRefined options of Azimuthal Integration in macro file
+- DATAREDUC-751: Bug fix: Wrong update of data chart when load data file
+- DATAREDUC-728: Improvement of calibration ui
+- DATAREDUC-736: Specific highlighter for calibration ui
+- DATAREDUC-739: Bug fix: Wrong title file for imported results
+- DATAREDUC-740: Bug fix: Wrong result name operations for Averaged user macros
+- DATAREDUC-741: Bug fix: Scaling Macro failed
+- DATAREDUC-743: AzimuthalIntegration time process is too slow
+- DATAREDUC-744: Bug fix: Import nxs file loading panel disappear before loading process is done
+- CTRLRFC-738, DATAREDUC-746: Waited average algorithm reviewed in case of negative values
+- DATAREDUC-749: Bug fix: Nexus files reading impossible after about 2 minutes
+- DATAREDUC-748: Customize nexus files lock lifetime
+- DATAREDUC-753: Sigma calculation algorithm reviewed
+- DATAREDUC-754: Limit cases reviewed in sigma calculation
+- Removed unused qStep and pixelStep parameters to avoid export bug 
+- Update last fitted value out of EDT to be sure to reuse it in next fit when asked
+- getOriginNameFromElement algorithm bug correction
+- TitledCircleGathering arguments parsing bug correction
+- NullPointerException avoided
+
+
+================================
+3.4.5-3307 (December 2017)
+================================
+- DATAREDUC-684: Contextual data deep renaming for better calibration understanding
+- DATAREDUC-689: Bug fix: Extractor doesn't seem to work with azimuthal integration
+- DATAREDUC-702: Azimuthal integration: use a label for default step
+- DATAREDUC-703: Azimuthal integration: manage apply for custom step
+- DATAREDUC-704: Azimuthal integration: PONI should be displayed like any other contextual data
+- DATAREDUC-705: Azimuthal integration: Number of digits of precision
+- DATAREDUC-698: Renaming and missing unites variables in Azimuthal Profile
+- DATAREDUC-699: Bug fix: Dysfunctional polar coordinates
+- DATAREDUC-700: Bug fix: Successive runs of Merge and MergeWithout don't work
+- DATAREDUC-701: Bug fix: Wrong calculation of sigma in Projections operations
+- DATAREDUC-709: Rename Rg to GR
+- DATAREDUC-712: Rename MergeWithoutQSampling to MergeQ_NoResampling
+- PROBLEM-1114, DATAREDUC-682: Bug fix: Some nodes lost in multi thread
+- DATAREDUC-713: Bug fix: Result curves axis choice ignored
+- DATAREDUC-708: Renaming in angle calibration
+- DATAREDUC-710: azimuthalIntegration renaming in data export
+- DATAREDUC-711: average files renaming in data export
+- CI-986: Compatibility with Java 9
+- PROBLEM-1166, DATAREDUC-717: Bug fix: Files randomly ignored during multi selection in single thread mode
+- DATAREDUC-718: Bug fix: Nexus files access lock never released
+
+
+================================
+3.4.4-3251 (November 2017)
+================================
+- DATAREDUC-668: Bug fix: Image display problem
+- DATAREDUC-582: Identify which curve produced which point in result curves
+- DATAREDUC-583: Negative exponent polynomial fit
+- DATAREDUC-612: Stack to stack 2D operations
+- DATAREDUC-657: Bug fix: Pixel splitting missing from the Tilted circles interface
+- DATAREDUC-658: Alternative error calculation when integration step is in 2theta or q units
+- DATAREDUC-656: Bug fix: Tilted Circles with custom step in 2theta and X-axis values refined from actual pixel positions
+- DATAREDUC-654: Bug fix: Inappropriate default path to 2D->2D macro files
+- DATAREDUC-653: Bug fix: Border issues with circular mask
+- DATAREDUC-659: Eliminate Circle gathering and rename Tilted circle gathering
+- DATAREDUC-660: Alternative error calculation for Azimuthal profile
+- DATAREDUC-661: Bug fix: Average weighted on curves containing I=0
+- DATAREDUC-662: Error bars for Projections and Mean Projection
+- DATAREDUC-663: [Q,psi] polar coordinates
+- DATAREDUC-664: Bug fix: NullPointerException in MergeOnQWithoutQSampling
+- JAVAAPI-415: New EDF files sort algorithm in image stacks
+- DATAREDUC-634: Possibility to invert mask
+- DATAREDUC-671: Bug fix: Data export/import incompatible with global result mode
+- DATAREDUC-672: Bug fix: Average weighted fails on Projection / mean projection curves
+- DATAREDUC-670: Bug fix: Image rotation error in macros
+- CTRLRFC-672, DATAREDUC-681: 1 more digit precision in fit tables
+- DATAREDUC-666: Bug fix: Mistake in average variance
+- DATAREDUC-510: Detector bias renaming
+- DATAREDUC-556: Display input nodes on user macro node selection
+- (DATAREDUC-60): "Delta" renamed to "Encoder delta" in titles, and "Delta offset" renamed to "Delta 0" in titles
+
+
+================================
+3.4.3-3147 (August 2017)
+================================
+- DATAREDUC-60: Better detector angle calculation, with max peak algorithm
+- Multi loading bug correction
+- Juxtaposition is compatible with other image tools even if previously closed
+
+
+================================
+3.4.3-3134 (July 2017)
+================================
+- DATAREDUC-617: Circle and TiltedCircleGathering unification
+- DATAREDUC-639: Macro parameters cleaned and more explicit (warning! not backward compatible!)
+- DATAREDUC-60: Beta version of detector angle calculation
+- CTRLRFC-616: CDMA Nexus: Added the possibility to point on a DataItem name instead of its value
+- PROBLEM-898, CI-912: Mac OS X nexus file reading problem solved
+- PROBLEM-848, JAVAAPI-403: CDMA Nexus: ApplyCorrectionFactor plugin bug correction
+- CTRLRFC-539, JAVAAPI-405: CDMA Nexus and EDF: New ApplyExpression plugin, to apply an expression on a value before returning it
+- DATAREDUC-351: Alternative error calculation in TiltedCircleGathering
+- DATAREDUC-640: Alternative Q calculation in TiltedCircleGathering
+
+
+================================
+3.4.2-3043 (April 2017)
+================================
+- defaultUserMacro.properties updated for MergeOnQ
+- DATAREDUC-624: hidden MergePanel bug correction
+
+
+================================
+3.4.2-3041 (April 2017)
+================================
+- DATAREDUC-535: Possibility to use graphical tools with composite image
+- CTRLRFC-449, DATAREDUC-637: Update "delete operation" button tooltip
+- CTRLRFC-491, DATAREDUC-624: Graphical assistance for better user macro parameters selection
+- CTRLRFC-514, DATAREDUC-635: Persisting data per result in user macros
+- CTRLRFC-525, DATAREDUC-636: Auto load experiment
+
+
+================================
+3.4.1 (February 2017)
+================================
+- DATAREDUC-622: Customizable default parameter values for user macros
+- DATAREDUC-589: Persist clever average configuration
+- DATAREDUC-585: CleverAverage 2 algorithm update
+- DATAREDUC-558: New operation "AzimutalFromCircleGatheringAndFit"
+- CTRLRFC-382, DATAREDUC-619: Clever Average 5 (4bis)
+- DATAREDUC-546: Clever average 1 algorithm update
+- DATAREDUC-548: Clever average 3 algorithm update
+- DATAREDUC-554: Possibility not to automatically display operation results
+
+
+================================
+3.4.0 (December 2016)
+================================
+- DATAREDUC-558: new operation "AzimutalFromCircleGatheringAndFit"
+- DATAREDUC-615, CTRLRFC-380: Sigma calculation algorithm updated
+- DATAREDUC-549: Clever average 4 algorithm update
+- Immediate splash
+
+
+================================
+3.3.4 (November 2016)
+================================
+- DATAREDUC-563: Various extractor bugs correction + extractor algorithm enhancements
+- DATAREDUC-613: Better extracted files header management
+- DATAREDUC-574: Bug correction: Range step is missing for 2D operations
+- JAVAAPI-383: Bug correction: Invalid colors in log scale
+- DATAREDUC-575: Bug correction: 2D operations: Wrong ranges
+- DATAREDUC-576: Bug correction: 2D operations don't seem to work on linux
+- DATAREDUC-577: 2D operations: experimental name should be given the same value as the file name
+- JAVAAPI-384: Bug correction: Line profile Dialog goes behind Foxtrot frame when editing line profile ROI
+- DATAREDUC-590: Bug correction: Subtract creates empty nodes in case of failure
+- DATAREDUC-591: Bug correction: Average should not be sensitive to missing 2Theta when Q exists: projection case
+- DATAREDUC-595: Do not check pixel split by default
+- DATAREDUC-604: Fit table: Axis interaction buttons should only be available through right click on axis row
+- DATAREDUC-601: Fit table: Axis deletion by [Del.] should only be possible if "Axis" cell is the currently selected one, or should delete only currently selected axis in other cases
+- DATAREDUC-592: In toolbar: rename "Operation" to "Operation on ROI"
+- DATAREDUC-593: Rename in Foxtrot "Run executor" to "2D->2D operation"
+- DATAREDUC-578: Bug correction:  Too many parameters in fit setup
+- DATAREDUC-579: Bug correction: Multi gaussian fit bugs when fitting more than 1 curve
+- DATAREDUC-584: 2D->2D UI enhancements
+- DATAREDUC-599: 2D->2D operations: add operation description
+- DATAREDUC-594: Use former contrast icon
+- DATAREDUC-602: Bug correction: Fits : changing the number of gaussians to fit does not impact the "last value" fields correctly
+- DATAREDUC-603: Bug correction: Different results for the same macro on a stack with all images identical
+- DATAREDUC-598: Axis names: Y1 -> "Intensity: arb.units" for classic charts, "Fit parameter 1" and "Fit parameter 2" for result curves charts
+- DATAREDUC-597: Rename "Result curves" tab to "Fit. Param. Evol."
+- DATAREDUC-596: Ensure that users understand that "Use last" is clickable and that when "use last" is checked, it will update the curves in chart
+- DATAREDUC-600: A fit done on Q should not be displayed in chart when selecting a different scale
+- DATAREDUC-605: 2D operations renaming
+- DATAREDUC-606: Bug correction: Wrong X autoscale for result curves chart
+- DATAREDUC-608: Logo management
+- DATAREDUC-610: Bug correction: Angular sectors don't seem to work in macros
+- JAVAAPI-386: Bug correction: "Delete sector" does not visually delete the sector in ImageViewer
+- DATAREDUC-611: Bug correction: Result curves import/export bug
+- DATAREDUC-568: Bug correction: Extractor file names bug with subtract
+- DATAREDUC-570: Bug correction: Persisting data is not imported until Foxtrot loads an image stack
+- JAVAAPI-385: UTF8 encoding in exported nexus files
+- DATAREDUC-586: Bug correction: CleverAverage does not work correctly when split by group
+- DATAREDUC-587: Bug correction: Fit does not take the good arguments when done on clever average
+- DATAREDUC-607: Bug correction: Fit selection does not seem to work correctly
+- 2D operations: Better file compatibility management (OS dependent)
+
+
+================================
+3.3.3 (July 2016)
+================================
+- DATAREDUC-565: 2D operations don't seem to work with EDF files
+- JAVAAPI-377: EDF DataItemStacker fails to stack data items correctly --> workaround
+- JAVAAPI-378: EDF plugin fails to read scalar numbers
+- DATAREDUC-561: Changing fit bounds resets the number of lorentzian/gaussian to fit
+- DATAREDUC-562: Application freezes at fits column selection
+- DATAREDUC-442: image name as cursor tooltip
+- Foxtrot image tools should be setup like previous releases
+- JAVAAPI-374: nexus plugin keeps lock on written files, even when finished writing
+- Macro parsing bug in case of "free hand" Roi
+- DATAREDUC-570: Persisting data is not imported until Foxtrot loads an image stack --> imperfect workaround
+
+
+================================
+3.3.2-2 (June 2016)
+================================
+- EDF compatibility bug correction
+- Macro directory bug correction
+
+
+================================
+3.3.2 (June 2016)
+================================
+- DATAREDUC-174: Curve VS Context data
+- DATAREDUC-522: Use context data in fits
+- DATAREDUC-360: 2D->2D operations
+- DATAREDUC-533: Ensure operation order in multi threads treatment
+- DATAREDUC-98: Use clever average (swing only)
+- DATAREDUC-555: Bug correction: Subtract not really compatible with clever average
+- DATAREDUC-541: Performances adjustment renaming
+- DATAREDUC-536: Bug correction: Empty folder displayed as an image stack
+- DATAREDUC-552: Image tree default sorting
+- DATAREDUC-543: Rename "merge" to "average"
+- DATAREDUC-550: Lorentzian sum fit
+- CTRLDESK-1410, PROBLEM-357, DATAREDUC-557: Bug correction: sometimes, average fails to produce sigma value
+- Undo/Redo removed
+- Spaces in image stack name bug correction
+- Subtract spectra does not produce any node when it failed to work
+- Fit exploring icon removed
+- Directories edition limited
+- Axis labeled with X/Z for Q image scale
+
+
+================================
+3.3.1 (March 2016)
+================================
+- DATAREDUC-468: chart log scale bug correction
+- DATAREDUC-467: Optimizations and threading
+- DATAREDUC-360: Foxtrot is ready for external workers (will be necessary for 2D-2D algorithms)
+- DATAREDUC-520: Trace which dictionary is used
+- Memory checker added
+
+
+================================
+3.3.0-2 (January 2016)
+================================
+- DATAREDUC-513: Do not lose fit bounds any more
+- DATAREDUC-512: "Enter initial guesses" no more checked by default
+- Now, "preview fit" updates the data to fit without changing bounds (prepares DATAREDUC-514)
+- Pressing "enter" in fit bounds fields launches "do fit" action (prepares DATAREDUC-511)
+
+
+================================
+3.3.0 (December 2015)
+================================
+ - DATAREDUC-353: Mean by group
+ - DATAREDUC-393: Select visible
+ - DATAREDUC-386: Fit input improvement
+ - DATAREDUC-235: "Preview Fit" button should be available only when some data is selected in Operation tree
+ - DATAREDUC-463: No more "Set input" button with single argument user macros
+ - DATAREDUC-365: Display N images
+ - DATAREDUC-484: Bug in ImageViewer's table that seems to freeze application
+ - JAVAAPI-194: Roi zoom should better match the Roi
+ - DATAREDUC-459: Externalize foxtrot output files library
+ - CONTROLGUI-162: Dual profile on a Roi, instead of current system
+ - DATAREDUC-499: Azimuthal profile uses 0 instead of NaN at initialization
+ - JAVAAPI-353: ImageViewer: let user choose how to interact with mouse wheel on zoom
+ - DATAREDUC-480: New button "Play" to display all images with a given pause between eachother
+ - JAVAAPI-351: Unexpected exception for nexus files containing only 1 image in stack
+ - Do not allow all files format in load/save mask
+ - Help dialog available in macro edition dialog
+
+
+================================
+3.2.7-9 (October 2015)
+================================
+ - Data reading bug correction
+ - Better data export performances
+ - Python extractor bug correction
+ - File list refreshment bug correction
+ - Better q radius algorithm
+ - DATAREDUC-489, DATAREDUC-497: data loading bug correction
+ - DATAREDUC-491: Ewald spherical correction algorithm reviewed
+ - Mac and Linux scripts updated
+ - Python script updated for backward compatibility
+ - Installation notes updated
+
+
+================================
+3.2.7 (August 2015)
+================================
+ - "Calibration mode" removed from ImageViewer as useless and dangerous in Foxtrot
+ - Some spelling corrections
+ - JAVAAPI-318: Bug correction: Zoom back does not seem to work when called from chart menu
+ - DATAREDUC-470: Bug correction: Auto hide viewer definitely hides the ImageViewer
+ - JAVAAPI-319: Bug correction: ImageViewer: wrong colors in log scale
+ - DATAREDUC-471: Bug correction: Foxtrot freezes when running operation on circle ROI
+ - DATAREDUC-472: Remove save/load settings options from chart menu
+
+
+================================
+3.2.6 (August 2015)
+================================
+ - Better zoom management with mouse wheel in ImageViewer
+ - DATAREDUC-450: Bug correction: Integration2D import failure
+ - DATAREDUC-448: Windows packaging problems solved
+ - DATAREDUC-451: Bug correction: Angular sector seems to have half a pixel offset
+ - DATAREDUC-452: Bug correction: circle gathering: 0 instead of NaN
+ - DATAREDUC-453: Bug correction: Tilted circle gathering and circle gathering do not start at same Q
+ - DATAREDUC-454: Bug correction: Intensity monitor is not read correctly in azimuthal profile when called through macro
+ - DATAREDUC-457: Added the possibility to customize image tree data sorting
+ - Scaling bug correction
+ - Better image viewer toolbar
+ - DATAREDUC-460: Axis names harmonization
+ - DATAREDUC-461: LinearFunction: added missing parameters in extracted files header
+ - DATAREDUC-462: Bug correction: Average does not work on scaled data
+ - Show exclusive now unchecks nodes that don't have their data displayed any more (these nodes are no more underlined)
+ - DATAREDUC-398: Bug correction: Show only selected result curves only displays 1 set of curves
+ - Windows script updated in order to use DOS folder names
+ - Added the possibility to display user guide in application
+
+
+================================
+3.2.5 (June 2015)
+================================
+ - DATAREDUC-423: Bug correction: Bad operation tree nodes deletion
+ - DATAREDUC-426: Bug correction: JoinSpectra: scale bug and better names
+ - DATAREDUC-427: Bug correction: Scaling: bad scale bounds management
+ - DATAREDUC-428: Bug correction: LinearFuntion should be exported to .dat files the same way as Subtract
+ - DATAREDUC-429: Bug correction: SubtractSpectra misses some results
+ - DATAREDUC-430: Cross fits result curves
+ - DATAREDUC-354: Data export using CDMA
+ - JAVAAPI-182: Use HDF5 instead of Nexus in CDMA
+ - JAVAAPI-182: Python extractor rewritten and repackaged for better compatibilty with nexus output files written with HDF5 API.
+ - DATAREDUC-438: Change macro directory when changing selected macro through "browse" button
+ - DATAREDUC-439: Bug correction: Hiding an action in image toolbar does not change last selected action in grouped actions
+ - DATAREDUC-440: Bug correction: Bad user macros nodes management
+ - JAVAAPI-292: Bug correction: ImageViewer: zooming with mouse wheel does not work well in corners
+ - DATAREDUC-447: Chart: Add possibility to move "Zoom back" button
+ - DATAREDUC-446: Bug correction: Extracted average .dat file misses some parameters in header
+
+
+================================
+3.2.4 (May 2015)
+================================
+ - DATAREDUC-424: Line Profile: pixel unit
+ - DATAREDUC-425: Deactivate 2theta psi export
+ - DATAREDUC-432: Move mask with keyboard
+ - DATAREDUC-433: Constant Q simulation: Automatic circles display + some renaming
+ - DATAREDUC-434: Treat images by tree order and not selection order
+ - DATAREDUC-435: Bug correction: TitledCircleGathering crashes when called twice
+ - DATAREDUC-431: No more ImageJ fits
+
+
+================================
+3.2.3 (April 2015)
+================================
+ - JAVAAPI-277: CDMA: EDF: context data stacking with filters
+ - JAVAAPI-276: CDMA: EDF: Compatibility with context data that contain '{' in their value
+ - JAVAAPI-280: CDMA: EDF: Mapping dictionary detection
+ - DATAREDUC-399: ImageViewer has its own tool bar, which contains all the buttons that interact with ImageViewer
+ - DATAREDUC-399: Regroup buttons by categories in ImageViewer's tool bar
+ - DATAREDUC-419: Shorter names for fit bounds
+ - JAVAAPI-234: ImageViewer: displayed values match "show table" format
+
+
+================================
+3.2.2 (April 2015)
+================================
+ - DATAREDUC-397: Bug correction: All fit curves are red
+ - JAVAAPI-273: Bug correction: Random NullPointerException on data export
+ - JAVAAPI-236: Bug correction: Foxtrot locked due to NullPointerException when nexus file is incomplete
+ - JAVAAPI-271: Bug correction: ThresoldMask does not work with EDF stacks
+ - JAVAAPI-266: Bug correction: Empty experiment name with EDF folders
+ - DATAREDUC-337: Transmission calculation
+ - DATAREDUC-400: Scaling, LinearFunction and JoinSpectra in ASCII files
+ - DATAREDUC-401: Name of full java user macros
+ - DATAREDUC-403: Fits: Bug correction: Infinite standard deviation
+ - DATAREDUC-404: Bug correction: Empty node with scaling
+ - DATAREDUC-415: Different ascii file names for 2 identical operations on same image
+ - JAVAAPI-274: Use "Color scale" instead of "Fit" in ImageViewer's color scale labels
+
+
+================================
+3.2.1 (March 2015)
+================================
+ - CI-345: Automatic package generation
+ - DATAREDUC-358: Tilted circle gathering: added the possibility to customize 2theta step
+ - DATAREDUC-383: Guinier I0 is on Y2
+ - DATAREDUC-22: Added the possibility to use full java user macros
+ - DATAREDUC-311: New join spectra user macro (full java)
+ - DATAREDUC-311: New join spectra user macro with sigma based on intensity variance (full java)
+ - DATAREDUC-381: Fit bounds do not disappear when entering fit parameters
+ - DATAREDUC-77: Energy is available in exported files
+ - DATAREDUC-356: Detector name is available in exported files
+ - DATAREDUC-361: Comment is available in exported files
+ - JAVAAPI-215: Error bars are visible in chart for negative values in log scale
+ - DATAREDUC-342: New linear function user macro (full java)
+ - DATAREDUC-367: New scaling user macro (full java)
+ - DATAREDUC-364: New LinearFunction user macro (full java)
+ - DATAREDUC-385: Number format in fit table reviewed
+ - DATAREDUC-384: Fit table size does not depend on available display size
+ - DATAREDUC-272: Fit results standard deviation calculated
+ - DATAREDUC-387: Gaussian fit with 2nd degree polynomial background
+ - DATAREDUC-391: Added the possibility to grow/reduce mask
+ - JAVAAPI-259: Added the possibility to add loaded mask to current mask
+ - DATAREDUC-392: Added the possibility to move mask
+ - DATAREDUC-285: Fit: chi2 calculated, progression popup displayed, possibility to fix some parameters
+ - DATAREDUC-390: Added the possibility to export/import masks to/from image files (bmp, png, gif)
+ - DATAREDUC-369: Normalization with several spectra algorithm reviewed
+
+
+================================
+3.1.1 (January 2015)
+================================
+ - DATAREDUC-375: Fit: better weights management
+ - DATAREDUC-362: Automatic PONI calculation
+ - DATAREDUC-363: 2D Powder diffraction simulation added
+ - DATAREDUC-368: Python subtract user macro extraction bug correction
+ - DATAREDUC-370: Average user macro bug correction
+
+
+================================
+3.1.0 (December 2014)
+================================
+ - DATAREDUC-333: Psi button added
+ - DATAREDUC-330: Projections compute Q
+ - DATAREDUC-322: Correction of a bug that happened after about 100 images treatment
+ - DATAREDUC-289: 2theta/psi polar coordinates file export management
+ - JAVAAPI-177: CDMA: A directory containing only EDF files is considered as an experiment (image stack)
+ - DATAREDUC-288: Azimuthal profile added
+ - DATAREDUC-264: Circle gathering computes 2 theta too
+ - DATAREDUC-196: Adapt chart labels to selected scale button
+ - DATAREDUC-304: Gamma offset management
+ - DATAREDUC-305: PONI calculator
+ - DATAREDUC-314: No nore need to click twice on delete button to delete tree nodes
+ - DATAREDUC-313: Do not collapse operation tree after deletion
+ - DATAREDUC-307: IM values in output files
+ - DATAREDUC-300: Foxtrot version in output files
+ - DATAREDUC-316: Better bias management in circle gathering
+ - DATAREDUC-326: Better error bars transformation in chart formulas
+ - DATAREDUC-327: Better fit bounds management
+ - DATAREDUC-334: Added the possibility to customize psi step
+ - DATAREDUC-329: Better chart interactions
+ - DATAREDUC-348: Added shortcut to linear/log scales in chart
+ - DATAREDUC-323: Improved titled circle gathering performances
+ - DATAREDUC-339: Better sigma calculation in user macros
+ - DATAREDUC-340: Better center of mass calculation
+ - DATAREDUC-341: Better image integral calculation
+ - DATAREDUC-343: Python script updated for better 2 theta management
+ - DATAREDUC-344: Number formats reviewed
+ - DATAREDUC-347: Added the possibility to export all fits to CSV file
+ - DATAREDUC-349: Fit min and max are now separated in table
+ - DATAREDUC-271: Added the possibility to display only currently visible (due to zoom) curves in chart
+
+
+================================
+3.0.36 (July 2014)
+================================
+ - DATAREDUC-292: Crazy slider bug correction
+ - DATAREDUC-306: Python extractor bugs correction
+ - DATAREDUC-321, DATAREDUC-136: Bugs correction concerning experiments that contain "Q" in their name
+ - DATAREDUC-296: CDMA image recovery bug correction
+ - DATAREDUC-298: Tilted circle gathering import bug correction
+ - DATAREDUC-299: User macros compatible with 2 theta
+ - JAVAAPI-181: Chart scales bug correction
+ - JAVAAPI-180: Exposure time in secondes in EDF files (CDMA)
+ - DATAREDUC-309: 2 theta/Psi plugin deactivated
+ - DATAREDUC-290,DATAREDUC-302: ImageViewer colors reviewed
+
+
+================================
+3.0.35 (July 2014)
+================================
+ - DATAREDUC-248: Dual Profile lock bug correction
+ - DATAREDUC-250: Threshold maskicon updated
+ - JAVAAPI-172: CDMA: Nexus performances improved
+ - JAVAAPI-173: CDMA: EDF files sorted by date 
+ - JAVAAPI-174: CDMA optimizations
+ - DATAREDUC-4: Image toolbar icons rearranged
+ - DATAREDUC-249: 5%-95% contrast applied on whole image on first click
+
+================================
+3.0.29 (May 2014)
+================================
+ - DATAREDUC-218: "Select only visible" in Kratky plot bug correction
+ - DATAREDUC-221: Pixel Size effectively read in application arguments 
+ - DATAREDUC-222: Beam center coordinates as context data
+ - DATAREDUC-226: Pixel size, gain and bias as context data
+ - DATAREDUC-229: ImageViewer: Negative values to minimum color in log scale
+ - DATAREDUC-233: Smaller generate curves button
+ - DATAREDUC-234: Select all fits button added
+
+
+================================
+3.0.24 (January 2014)
+================================
+ - DATAREDUC-10: refresh collapse and expand image tree buttons added in toolbar
+ - DATAREDUC-50: Foxtrot is no more under GPL license
+ - DATAREDUC-64: Fit results number format reviewed
+ - DATAREDUC-69: Operation drag & drop scale bug correction
+ - DATAREDUC-73: BrowseMacroPanel labels updated
+ - DATAREDUC-76: Added the possibility to delete fits through [Del] key in "Fit Result Params" table
+ - DATAREDUC-97: Use a ComboBox to display macros list
+ - DATAREDUC-108: Added the possibility to force used language
+ - DATAREDUC-110: Reload operation tree after macro execution
+ - DATAREDUC-130: Created fits are added in operation tree
+ - DATAREDUC-162: Fits displayed in operations chart
+
+
+================================
+3.0.23 (November 2013)
+================================
+ - DATAREDUC-8: properties files are application specific
+ - DATAREDUC-100: Use gray as background color
+ - DATAREDUC-102: Displayed image flickering bug correction
+ - DATAREDUC-103: ROI name position reviewed
+ - DATAREDUC-105: Curves default plot properties reviewed
+ - DATAREDUC-107: Nexus files access bug correction
+ - DATAREDUC-113: Reset layout bug correction
+ - DATAREDUC-117: Better user macro context description
+ - DATAREDUC-144: Fit bounds display bug correction
+ - DATAREDUC-154: Q scale bug correction
+
+
+================================
+3.0.21 (September 2013)
+================================
+ - DATAREDUC-112: Reset layout bug correction
+ - DATAREDUC-118: Error bars bug correction
+ - DATAREDUC-145: NullPointerException avoided
+ - DATAREDUC-147: No need to click twice to run macro
+ - DATAREDUC-149: User macros are displayed in the expected chart
+ - DATAREDUC-161: Chart icons reviewed
+
+
+================================
+3.0.20 (September 2013)
+================================
+ - DATAREDUC-95: Image menu reviewed
+ - DATAREDUC-114, DATAREDUC-120: Python extractor included in Foxtrot package
+ - DATAREDUC-115: Layout reviewed
+ - DATAREDUC-116: Better application directories management
+ - DATAREDUC-119: Progress bar adapted to multiple files treatment
+ - DATAREDUC-148: Icons reviewed
+ - DATAREDUC-156, DATAREDUC-159: Circle ROI bugs correction
+ - DATAREDUC-165: User macros popup labels reviewed
+ - DATAREDUC-168: Default language management
+ - DATAREDUC-169: Added the possibility to run macro on selection, no more on loaded experiment
+ - DATAREDUC-170: Fit result names reviewed
+ - JAVAAPI-52: Better image zoom managment
+ - JAVAAPI-53: Empty file tree bug correction
+
+
+================================
+3.0.19 (August 2013)
+================================
+ - MANTIS-19351: Nexus files access optimization
+ - MANTIS-19359: No more need to close application before re-importing exported files
+ - MANTIS-19303: Added the possibility to normalize with several spectra
+ - MANTIS-19331: Pixel size repartition calculation improvement
+ - MANTIS-19339: Added the possibility to apply formulas on chart scales
+ - MANTIS-19341: Quick user macros access
+ - MANTIS-19345: Added the possibility to select an operation in tree from its curve in chart
+ - MANTIS-19352: Do not plot sigma, Q and coef in chart
+ - MANTIS-19354: Performances improvement
+ - MANTIS-19355: "OK" button closes user macros popup 
+ - MANTIS-19356: Image sectors enabled
+ - MANTIS-19357: Fit bounds display bug correction
+ - MANTIS-19358: Fit result curves bug correction
+ - MANTIS-19360: Do not display "waiting" message during image change
+ - MANTIS-19362: Application title and icons reviewed
+ - MANTIS-19382: Better operation slection management
+ - MANTIS-19387: Better data export management

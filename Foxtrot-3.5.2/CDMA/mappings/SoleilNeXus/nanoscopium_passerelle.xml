@@ -1,0 +1,1141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map-def SYSTEM "../../dtd/mapping_file.dtd">
+<map-def name="NANOSCOPIUM_PASSERELLE" version="1.0.0">
+	<item key="acquisition_sequence">
+		<path>/</path>
+		<call>CreateVirtualItem</call>
+	</item>
+	<item key="acquisition_origin">
+		<path>/{NXinstrument}</path>
+		<call>CreateVirtualItem</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="camera">
+		<path>/{NXinstrument}/Aviex{NXdetector}</path>
+		<call>CreateVirtualItem</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="channelScale">
+		<path>/{NXinstrument}/Aviex{NXdetector}/channelScale</path>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="dark">
+		<path>/{NXinstrument}/Aviex{NXdetector}/intensityBlack</path>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="distance">
+		<path>/{NXinstrument}/Aviex{NXdetector}/distance</path>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="exposureTime">
+		<path>/{NXinstrument}/Aviex{NXdetector}/Exposure</path>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="detectorGain">
+		<path>/{NXinstrument}/Aviex{NXdetector}/Gain</path>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="shutterCloseDelay">
+		<path>/{NXinstrument}/Aviex{NXdetector}/ShutterCloseDelay</path>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="xBin">
+		<path>/{NXinstrument}/Aviex{NXdetector}/Xbin</path>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="zBin">
+		<path>/{NXinstrument}/Aviex{NXdetector}/Ybin</path>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="x0">
+		<path>/{NXinstrument}/Aviex{NXdetector}/dir_beam_x</path>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="z0">
+		<path>/{NXinstrument}/Aviex{NXdetector}/dir_beam_z</path>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="mi">
+		<path>/{NXinstrument}/{NXintensity_monitor}</path>
+		<call>CreateVirtualItem</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<!-- This gain is not the expected gain (dixit Javier PEREZ). Do not read 
+		it. <item key="gain"> <path>/{NXinstrument}/{NXintensity_monitor}/Gain</path> 
+		<call>HarvestEquipmentAttributes</call> </item> -->
+	<item key="intensity">
+		<path>/{NXinstrument}/{NXintensity_monitor}/intensity</path>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="lambda">
+		<path>/{NXinstrument}/{NXmonochromator}/wavelength</path>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="energy">
+		<path>/{NXinstrument}/{NXmonochromator}/energy</path>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="images">
+		<path>/image*{NXdata}/data</path>
+		<call>DataItemStacker</call>
+		<call>HarvestSignalAttributes</call>
+		<attribute name="equipment">
+			<path>/{NXinstrument}/Aviex{NXdetector}</path>
+			<call>HarvestEquipmentAttributes</call>
+		</attribute>
+		<attribute name="interpretation" value="image" />
+	</item>
+	<item key="comments">
+		<path>/{NXsample}/comments/data</path>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="machine_current">
+		<path>/{NXentry}/{NXinstrument}/{NXsource}/current</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C00__EX__OH2-PT100.13_temperature">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C00__EX__OH2-PT100.13/temperature</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+		<attribute name="interpretation" value="spectrum" />
+	</item>
+	<item key="I13-LN-CX2__OP__ZP.1-MT_Tz_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__OP__ZP.1-MT_Tz/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__OP__ZP.1-MT_Tz_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__OP__ZP.1-MT_Tz/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__EX__FENT_V_position">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__EX__FENT_V/position</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__EX__FENT_V_outside_down_position">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__EX__FENT_V/outside_down_position</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__EX__FENT_V_postion_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__EX__FENT_V/postion_offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__EX__FENT_V_inside_up_position">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__EX__FENT_V/inside_up_position</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__EX__FENT_V_gap">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__EX__FENT_V/gap</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C00__EX__OH2-PT100.14_temperature">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C00__EX__OH2-PT100.14/temperature</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C00__EX__OH2-PT100.15_temperature">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C00__EX__OH2-PT100.15/temperature</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__OP__ZP.1-MT_Tx_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__OP__ZP.1-MT_Tx/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__OP__ZP.1-MT_Tx_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__OP__ZP.1-MT_Tx/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C00__EX__OH2-PT100.16_temperature">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C00__EX__OH2-PT100.16/temperature</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C05__EX__FENT_H-MT_O_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C05__EX__FENT_H-MT_O/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C05__EX__FENT_H-MT_O_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C05__EX__FENT_H-MT_O/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C05__EX__FENT_V-MT_D_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C05__EX__FENT_V-MT_D/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C05__EX__FENT_V-MT_D_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C05__EX__FENT_V-MT_D/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C06__OP__MONO1-MT_Tx.2_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C06__OP__MONO1-MT_Tx.2/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C06__OP__MONO1-MT_Tx.2_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C06__OP__MONO1-MT_Tx.2/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C08__EX__FENT_V-MT_GAP_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C08__EX__FENT_V-MT_GAP/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C08__EX__FENT_V-MT_GAP_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C08__EX__FENT_V-MT_GAP/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C00__EX__OH2-PT100.10_temperature">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C00__EX__OH2-PT100.10/temperature</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__OP__ZP.1-MT_Ts_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__OP__ZP.1-MT_Ts/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__OP__ZP.1-MT_Ts_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__OP__ZP.1-MT_Ts/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__OP__CS.1-MT_Tz_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__OP__CS.1-MT_Tz/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__OP__CS.1-MT_Tz_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__OP__CS.1-MT_Tz/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C00__EX__OH2-PT100.11_temperature">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C00__EX__OH2-PT100.11/temperature</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C00__EX__OH2-PT100.12_temperature">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C00__EX__OH2-PT100.12/temperature</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__OP__CS.1-MT_Tx_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__OP__CS.1-MT_Tx/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__OP__CS.1-MT_Tx_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__OP__CS.1-MT_Tx/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C00__EX__OH2-PT100.9_temperature">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C00__EX__OH2-PT100.9/temperature</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C08__EX__FENT_V-MT_POS_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C08__EX__FENT_V-MT_POS/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C08__EX__FENT_V-MT_POS_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C08__EX__FENT_V-MT_POS/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C00__EX__OH2-PT100.8_temperature">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C00__EX__OH2-PT100.8/temperature</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C08__EX__FENT_H-MT_GAP_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C08__EX__FENT_H-MT_GAP/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C08__EX__FENT_H-MT_GAP_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C08__EX__FENT_H-MT_GAP/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C00__EX__OH2-PT100.7_temperature">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C00__EX__OH2-PT100.7/temperature</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C08__EX__FENT_H-MT_POS_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C08__EX__FENT_H-MT_POS/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C08__EX__FENT_H-MT_POS_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C08__EX__FENT_H-MT_POS/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C00__EX__OH2-PT100.6_temperature">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C00__EX__OH2-PT100.6/temperature</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C06__OP__MONO1-MT_Rz.1_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C06__OP__MONO1-MT_Rz.1/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C06__OP__MONO1-MT_Rz.1_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C06__OP__MONO1-MT_Rz.1/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C00__EX__OH2-PT100.5_temperature">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C00__EX__OH2-PT100.5/temperature</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C06__OP__MONO1-MT_Rz.2_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C06__OP__MONO1-MT_Rz.2/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C06__OP__MONO1-MT_Rz.2_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C06__OP__MONO1-MT_Rz.2/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__OP__CS.1-MT_Ts_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__OP__CS.1-MT_Ts/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__OP__CS.1-MT_Ts_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__OP__CS.1-MT_Ts/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C00__EX__OH2-PT100.4_temperature">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C00__EX__OH2-PT100.4/temperature</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C00__EX__OH2-PT100.3_temperature">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C00__EX__OH2-PT100.3/temperature</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C00__EX__OH2-PT100.2_temperature">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C00__EX__OH2-PT100.2/temperature</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C05__DT__IMG_exposure_time">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C05__DT__IMG/exposure_time</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C05__DT__IMG_roi_height">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C05__DT__IMG/roi_height</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C05__DT__IMG_image">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C05__DT__IMG/image</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+		<attribute name="interpretation" value="image" />
+	</item>
+	<item key="I13-LN-C05__DT__IMG_roi_width">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C05__DT__IMG/roi_width</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C00__EX__OH2-PT100.1_temperature">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C00__EX__OH2-PT100.1/temperature</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C05__EX__FENT_V-MT_U_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C05__EX__FENT_V-MT_U/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C05__EX__FENT_V-MT_U_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C05__EX__FENT_V-MT_U/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C07__DT__IMG.1_exposure_time">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C07__DT__IMG.1/exposure_time</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C07__DT__IMG.1_roi_height">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C07__DT__IMG.1/roi_height</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C07__DT__IMG.1_image">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C07__DT__IMG.1/image</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+		<attribute name="interpretation" value="image" />
+	</item>
+	<item key="I13-LN-C07__DT__IMG.1_roi_width">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C07__DT__IMG.1/roi_width</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C06__OP__MONO1-MT_Tz_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C06__OP__MONO1-MT_Tz/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C06__OP__MONO1-MT_Tz_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C06__OP__MONO1-MT_Tz/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C03__OP__MIR1-MT_Rz_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C03__OP__MIR1-MT_Rz/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C03__OP__MIR1-MT_Rz_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C03__OP__MIR1-MT_Rz/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C04__OP__MIR2-MT_Tz_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C04__OP__MIR2-MT_Tz/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C04__OP__MIR2-MT_Tz_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C04__OP__MIR2-MT_Tz/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="Monochromator_theta">
+		<path>/{NXentry}/NANOSCOPIUM/Monochromator/theta</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="Monochromator_rz2_fine">
+		<path>/{NXentry}/NANOSCOPIUM/Monochromator/rz2_fine</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="Monochromator_enable_rs2">
+		<path>/{NXentry}/NANOSCOPIUM/Monochromator/enable_rs2</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="Monochromator_enable_rs1">
+		<path>/{NXentry}/NANOSCOPIUM/Monochromator/enable_rs1</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="Monochromator_enable_rx2">
+		<path>/{NXentry}/NANOSCOPIUM/Monochromator/enable_rx2</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="Monochromator_rx2">
+		<path>/{NXentry}/NANOSCOPIUM/Monochromator/rx2</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="Monochromator_rz2">
+		<path>/{NXentry}/NANOSCOPIUM/Monochromator/rz2</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="Monochromator_enable_rz2">
+		<path>/{NXentry}/NANOSCOPIUM/Monochromator/enable_rz2</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="Monochromator_enable_tx1">
+		<path>/{NXentry}/NANOSCOPIUM/Monochromator/enable_tx1</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="Monochromator_lambda">
+		<path>/{NXentry}/NANOSCOPIUM/Monochromator/lambda</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="Monochromator_tz2">
+		<path>/{NXentry}/NANOSCOPIUM/Monochromator/tz2</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="Monochromator_enable_tx2">
+		<path>/{NXentry}/NANOSCOPIUM/Monochromator/enable_tx2</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="Monochromator_tx2">
+		<path>/{NXentry}/NANOSCOPIUM/Monochromator/tx2</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="Monochromator_tx1">
+		<path>/{NXentry}/NANOSCOPIUM/Monochromator/tx1</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="Monochromator_enable_rx2_fine">
+		<path>/{NXentry}/NANOSCOPIUM/Monochromator/enable_rx2_fine</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="Monochromator_crystal_inter_reticular_distance">
+		<path>/{NXentry}/NANOSCOPIUM/Monochromator/crystal_inter_reticular_distance</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="Monochromator_enable_tz2">
+		<path>/{NXentry}/NANOSCOPIUM/Monochromator/enable_tz2</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="Monochromator_rs2">
+		<path>/{NXentry}/NANOSCOPIUM/Monochromator/rs2</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="Monochromator_energy">
+		<path>/{NXentry}/NANOSCOPIUM/Monochromator/energy</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="Monochromator_rs1">
+		<path>/{NXentry}/NANOSCOPIUM/Monochromator/rs1</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C04__OP__MIR2-MT_Tx_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C04__OP__MIR2-MT_Tx/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C04__OP__MIR2-MT_Tx_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C04__OP__MIR2-MT_Tx/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C00__CA__BAI.1519-PCI.1B-SAI.3_average_mi_1">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C00__CA__BAI.1519-PCI.1B-SAI.3/average_mi_1</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C00__CA__BAI.1519-PCI.1B-SAI.3_average_mi_0">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C00__CA__BAI.1519-PCI.1B-SAI.3/average_mi_0</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C03__OP__MIR1-MT_Rx_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C03__OP__MIR1-MT_Rx/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C03__OP__MIR1-MT_Rx_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C03__OP__MIR1-MT_Rx/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__DT__IMG.6_exposure_time">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__DT__IMG.6/exposure_time</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__DT__IMG.6_roi_height">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__DT__IMG.6/roi_height</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__DT__IMG.6_image">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__DT__IMG.6/image</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+		<attribute name="interpretation" value="image" />
+	</item>
+	<item key="I13-LN-CX2__DT__IMG.6_roi_width">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__DT__IMG.6/roi_width</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C03__OP__MIR1-MT_Rs_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C03__OP__MIR1-MT_Rs/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C03__OP__MIR1-MT_Rs_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C03__OP__MIR1-MT_Rs/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__DT__IMG.4_exposure_time">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__DT__IMG.4/exposure_time</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__DT__IMG.4_roi_height">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__DT__IMG.4/roi_height</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__DT__IMG.4_image">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__DT__IMG.4/image</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+		<attribute name="interpretation" value="image" />
+	</item>
+	<item key="I13-LN-CX2__DT__IMG.4_roi_width">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__DT__IMG.4/roi_width</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__DT__IMG.3_exposure_time">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__DT__IMG.3/exposure_time</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__DT__IMG.3_roi_height">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__DT__IMG.3/roi_height</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__DT__IMG.3_image">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__DT__IMG.3/image</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+		<attribute name="interpretation" value="image" />
+	</item>
+	<item key="I13-LN-CX2__DT__IMG.3_roi_width">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__DT__IMG.3/roi_width</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__DT__IMG.1_exposure_time">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__DT__IMG.1/exposure_time</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__DT__IMG.1_roi_height">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__DT__IMG.1/roi_height</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__DT__IMG.1_image">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__DT__IMG.1/image</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+		<attribute name="interpretation" value="image" />
+	</item>
+	<item key="I13-LN-CX2__DT__IMG.1_roi_width">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__DT__IMG.1/roi_width</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C01__DT__DIAGON_exposure_time">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C01__DT__DIAGON/exposure_time</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C01__DT__DIAGON_roi_height">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C01__DT__DIAGON/roi_height</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C01__DT__DIAGON_image">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C01__DT__DIAGON/image</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+		<attribute name="interpretation" value="image" />
+	</item>
+	<item key="I13-LN-C01__DT__DIAGON_roi_width">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C01__DT__DIAGON/roi_width</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__EX__FENT_V-MT_GAP_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__EX__FENT_V-MT_GAP/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__EX__FENT_V-MT_GAP_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__EX__FENT_V-MT_GAP/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="ANS__CA__MACHINESTATUS_current">
+		<path>/{NXentry}/NANOSCOPIUM/ANS__CA__MACHINESTATUS/current</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="LifeTime_data">
+		<path>/{NXentry}/NANOSCOPIUM/ANS__CA__MACHINESTATUS/LifeTime/data</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX3__DT__IMG.1_exposure_time">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX3__DT__IMG.1/exposure_time</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX3__DT__IMG.1_roi_height">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX3__DT__IMG.1/roi_height</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX3__DT__IMG.1_image">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX3__DT__IMG.1/image</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+		<attribute name="interpretation" value="image" />
+	</item>
+	<item key="I13-LN-CX3__DT__IMG.1_roi_width">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX3__DT__IMG.1/roi_width</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__EX__SAMPLE-MT_Tz_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__EX__SAMPLE-MT_Tz/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__EX__SAMPLE-MT_Tz_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__EX__SAMPLE-MT_Tz/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__EX__SAMPLE-MT_Tx_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__EX__SAMPLE-MT_Tx/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__EX__SAMPLE-MT_Tx_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__EX__SAMPLE-MT_Tx/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__EX__SAMPLE-MT_Ts_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__EX__SAMPLE-MT_Ts/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__EX__SAMPLE-MT_Ts_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__EX__SAMPLE-MT_Ts/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__EX__FENT_H-MT_GAP_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__EX__FENT_H-MT_GAP/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__EX__FENT_H-MT_GAP_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__EX__FENT_H-MT_GAP/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__EX__FENT_H-MT_POS_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__EX__FENT_H-MT_POS/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__EX__FENT_H-MT_POS_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__EX__FENT_H-MT_POS/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C04__DT__IMG.1_exposure_time">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C04__DT__IMG.1/exposure_time</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C04__DT__IMG.1_roi_height">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C04__DT__IMG.1/roi_height</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C04__DT__IMG.1_image">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C04__DT__IMG.1/image</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+		<attribute name="interpretation" value="image" />
+	</item>
+	<item key="I13-LN-C04__DT__IMG.1_roi_width">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C04__DT__IMG.1/roi_width</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__EX__FENT_V-MT_POS_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__EX__FENT_V-MT_POS/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__EX__FENT_V-MT_POS_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__EX__FENT_V-MT_POS/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C08__DT__IMG_exposure_time">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C08__DT__IMG/exposure_time</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C08__DT__IMG_roi_height">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C08__DT__IMG/roi_height</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C08__DT__IMG_image">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C08__DT__IMG/image</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+		<attribute name="interpretation" value="image" />
+	</item>
+	<item key="I13-LN-C08__DT__IMG_roi_width">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C08__DT__IMG/roi_width</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX1__DT__IMG_exposure_time">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX1__DT__IMG/exposure_time</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX1__DT__IMG_roi_height">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX1__DT__IMG/roi_height</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX1__DT__IMG_image">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX1__DT__IMG/image</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+		<attribute name="interpretation" value="image" />
+	</item>
+	<item key="I13-LN-CX1__DT__IMG_roi_width">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX1__DT__IMG/roi_width</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C00__CA__BAI.1519-PCI.1B-SAI.1_average_channel_0">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C00__CA__BAI.1519-PCI.1B-SAI.1/average_channel_0</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C00__CA__BAI.1519-PCI.1B-SAI.1_average_channel_1">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C00__CA__BAI.1519-PCI.1B-SAI.1/average_channel_1</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C00__CA__BAI.1519-PCI.1B-SAI.1_average_channel_2">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C00__CA__BAI.1519-PCI.1B-SAI.1/average_channel_2</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C00__CA__BAI.1519-PCI.1B-SAI.1_average_channel_3">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C00__CA__BAI.1519-PCI.1B-SAI.1/average_channel_3</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C03__OP__MIR1-MT_Tx_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C03__OP__MIR1-MT_Tx/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C03__OP__MIR1-MT_Tx_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C03__OP__MIR1-MT_Tx/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C08__DT__XBPM.1-MT_Tx_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C08__DT__XBPM.1-MT_Tx/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C08__DT__XBPM.1-MT_Tx_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C08__DT__XBPM.1-MT_Tx/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX1__DT__CAMX_exposure_time">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX1__DT__CAMX/exposure_time</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX1__DT__CAMX_roi_height">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX1__DT__CAMX/roi_height</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX1__DT__CAMX_image">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX1__DT__CAMX/image</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+		<attribute name="interpretation" value="image" />
+	</item>
+	<item key="I13-LN-CX1__DT__CAMX_roi_width">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX1__DT__CAMX/roi_width</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C05__EX__FENT_H_position">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C05__EX__FENT_H/position</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C05__EX__FENT_H_outside_down_position">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C05__EX__FENT_H/outside_down_position</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C05__EX__FENT_H_postion_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C05__EX__FENT_H/postion_offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C05__EX__FENT_H_inside_up_position">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C05__EX__FENT_H/inside_up_position</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C05__EX__FENT_H_gap">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C05__EX__FENT_H/gap</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C04__OP__MIR2-MT_Rs_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C04__OP__MIR2-MT_Rs/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C04__OP__MIR2-MT_Rs_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C04__OP__MIR2-MT_Rs/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C08__DT__XBPM.1-MT_Tz_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C08__DT__XBPM.1-MT_Tz/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C08__DT__XBPM.1-MT_Tz_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C08__DT__XBPM.1-MT_Tz/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C05__EX__FENT_V_position">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C05__EX__FENT_V/position</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C05__EX__FENT_V_outside_down_position">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C05__EX__FENT_V/outside_down_position</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C05__EX__FENT_V_postion_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C05__EX__FENT_V/postion_offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C05__EX__FENT_V_inside_up_position">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C05__EX__FENT_V/inside_up_position</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C05__EX__FENT_V_gap">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C05__EX__FENT_V/gap</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C04__OP__MIR2-MT_Rz_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C04__OP__MIR2-MT_Rz/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C04__OP__MIR2-MT_Rz_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C04__OP__MIR2-MT_Rz/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C08__DT__XBPM.2-MT_Tz_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C08__DT__XBPM.2-MT_Tz/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C08__DT__XBPM.2-MT_Tz_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C08__DT__XBPM.2-MT_Tz/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C08__DT__XBPM.2-MT_Tx_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C08__DT__XBPM.2-MT_Tx/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C08__DT__XBPM.2-MT_Tx_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C08__DT__XBPM.2-MT_Tx/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="U18_gap_velocity">
+		<path>/{NXentry}/NANOSCOPIUM/U18/gap_velocity</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="U18_encoder_2_position">
+		<path>/{NXentry}/NANOSCOPIUM/U18/encoder_2_position</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="U18_gap">
+		<path>/{NXentry}/NANOSCOPIUM/U18/gap</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__EX__FENT_H_position">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__EX__FENT_H/position</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__EX__FENT_H_outside_down_position">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__EX__FENT_H/outside_down_position</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__EX__FENT_H_postion_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__EX__FENT_H/postion_offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__EX__FENT_H_inside_up_position">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__EX__FENT_H/inside_up_position</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__EX__FENT_H_gap">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__EX__FENT_H/gap</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C05__EX__FENT_H-MT_I_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C05__EX__FENT_H-MT_I/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C05__EX__FENT_H-MT_I_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C05__EX__FENT_H-MT_I/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__OP__OSA.1-MT_Tz_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__OP__OSA.1-MT_Tz/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__OP__OSA.1-MT_Tz_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__OP__OSA.1-MT_Tz/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__EX__SAMPLE-MT_Rz_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__EX__SAMPLE-MT_Rz/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__EX__SAMPLE-MT_Rz_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__EX__SAMPLE-MT_Rz/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C03__DT__IMG.2_exposure_time">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C03__DT__IMG.2/exposure_time</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C03__DT__IMG.2_roi_height">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C03__DT__IMG.2/roi_height</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C03__DT__IMG.2_image">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C03__DT__IMG.2/image</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+		<attribute name="interpretation" value="image" />
+	</item>
+	<item key="I13-LN-C03__DT__IMG.2_roi_width">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C03__DT__IMG.2/roi_width</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C06__OP__MONO1-MT_Tx.1_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C06__OP__MONO1-MT_Tx.1/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C06__OP__MONO1-MT_Tx.1_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C06__OP__MONO1-MT_Tx.1/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C03__DT__IMG.1_exposure_time">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C03__DT__IMG.1/exposure_time</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C03__DT__IMG.1_roi_height">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C03__DT__IMG.1/roi_height</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-C03__DT__IMG.1_roi_width">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-C03__DT__IMG.1/roi_width</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__OP__OSA.1-MT_Tx_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__OP__OSA.1-MT_Tx/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__OP__OSA.1-MT_Tx_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__OP__OSA.1-MT_Tx/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__OP__OSA.1-MT_Ts_raw_value">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__OP__OSA.1-MT_Ts/raw_value</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+	<item key="I13-LN-CX2__OP__OSA.1-MT_Ts_offset">
+		<path>/{NXentry}/NANOSCOPIUM/I13-LN-CX2__OP__OSA.1-MT_Ts/offset</path>
+		<call>DataItemStacker</call>
+		<call>HarvestEquipmentAttributes</call>
+	</item>
+</map-def>

@@ -1,0 +1,491 @@
+// HEADER_START
+// description: The goal of this macro is to sum spectra that share the same kind of name
+// parameter_count : 1
+// parameter_0_description : spectra to sum
+// parameter_0_displayName : Input
+// parameter_0_displayShortName : Sum
+// parameter_0_type : floatspectrum
+// parameter_0_cardinality : n
+// result_count : 1
+// result_0_description : resulting sums
+// result_0_type : floatspectrum
+// result_0_cardinality : n
+// HEADER_END
+
+// The goal of this macro is to sum spectra that share the same kind of name
+// Spectra should be listed that way "spectrum1\nspectrum2\n...\nspectrumn"
+// Each spectrum should be formated that way : "name:value"
+// Each value should be formated that way : "element1;element2;...;elementn"
+
+Ext.install("fr.soleil.ij.macro.adapter.MacroDoubleSpectrumAdapter");
+var DEFAULT_EXT = "_sum_" + call("java.lang.System.currentTimeMillis") + "_" + random();
+
+arg = getArgument();
+
+isTest = false;
+
+if (lengthOf(arg) == 0) {
+  arg = "radialIntensity:1;2;3\nsigma:1;2;3\nradialIntensitySum:1;2;3\nsigmaSum:1;2;3";
+  isTest = true;
+}
+if (isTest) print("Argument:\n----------\n" + arg + "\n----------");
+
+names = newArray(10);
+names[0] = "RadialIntensity";
+names[1] = "AzimuthalIntensity";
+names[2] = "meanSum";
+names[3] = "projection";
+names[4] = "meanProjection";
+names[5] = "sum";
+names[6] = "Sigma";
+names[7] = "Q";
+names[8] = "twoTheta";
+names[9] = "psi";
+nameLength = lengthOf(names);
+realNames = newArray(nameLength);
+spectrumLists = newArray(nameLength);
+for (i=0; i < nameLength; i++) {
+  spectrumLists[i] = "";
+  realNames[i] = "";
+}
+
+spectrumArray = splitParameterList(arg, "'Macro Argument'");
+splited = "";
+for (i=0; i < lengthOf(spectrumArray); i++) {
+  splited = extractNameAndKey(spectrumArray[i],i);
+  if (lengthOf(splited) != 2) {
+    exit("bad formated parameter at index " + i);
+  }
+  else {
+    // parameter correctly formated
+    index = -1;
+    for (j=0; j < lengthOf(names); j++) {
+      if ( isSimilar(names[j], splited[0]) ) {
+        index = j;
+      }
+    }
+    if (index == -1) {
+      // need to register a new spectrum name
+      index = lengthOf(names);
+      tempNames = newArray(lengthOf(names)+1);
+      tempRealNames = newArray(lengthOf(names)+1);
+      tempSpectrumLists = newArray(lengthOf(spectrumLists)+1);
+      for (j=0; j < lengthOf(names); j++) {
+        tempNames[j] = names[j];
+        tempRealNames[i] = realNames[i];
+        tempSpectrumLists[j] = spectrumLists[j];
+      }
+      tempNames[index] = splited[0];
+      tempRealNames[index] = "";
+      tempSpectrumLists[index] = "";
+      names = tempNames;
+      realNames = tempRealNames;
+      spectrumLists = tempSpectrumLists;
+    }
+    // add spectrum in corresponding list
+    if (lengthOf(spectrumLists[index]) == 0) {
+      spectrumLists[index] = splited[1];
+    }
+    else {
+      spectrumLists[index] = spectrumLists[index] + "\n" + splited[1];
+    }
+    if (lengthOf(realNames[index]) == 0) {
+      // check the name
+      toTest = splited[0];
+      openIndex = indexOf(toTest,"(");
+      slashIndex = indexOf(toTest,"/");
+      openSplit = split(toTest,"(");
+      slashSplit = split(toTest,"/");
+      if (lengthOf(openSplit) == 2) {
+        if (lengthOf(slashSplit) == 2) {
+          if (openIndex < slashIndex) {
+            if (indexOf(toTest,")") == lengthOf(toTest) - 1) {
+              // The name looks like an Image Operation Result name : store it
+              toTest = substring(toTest, 0, slashIndex) + ")";
+              realNames[index] = toTest;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+for (i=0; i < lengthOf(names); i++) {
+  // The "" before the call to a function is a workaround for an ImageJ bug.
+  // It looks like the only way to make ImageJ understand that the result of the function is a String.
+  if ( (!isSimilar("Q",names[i])) && (!isSimilar("twoTheta",names[i])) && (!isSimilar("psi",names[i])) ) {
+    if (isSimilar("Sigma",names[i])) {
+      spectrumLists[i] = "" + quadraticSum( names[i], spectrumLists[i] );
+    }
+    else {
+      spectrumLists[i] = "" + sum( names[i], spectrumLists[i] );
+    }
+  }
+  else {
+    if (lengthOf(spectrumLists[i]) > 0) {
+      //Stupid values needed for variable declaration
+      length = -1;
+      temp = 0.5;
+      spectrumArray = splitParameterList(spectrumLists[i],names[i]);
+    
+      Ext.setDoubleSpectrumKey(spectrumArray[0]);
+      Ext.getDoubleSpectrumLength(length);
+     
+      firstQValues = newArray(length);
+
+      for (j=0; j < length; j++) {
+        Ext.setDoubleSpectrumIndex(j);
+        Ext.getDoubleValueAtSelectedSpectrumIndex(temp);
+        firstQValues[j] = temp;
+      }
+      if (isSimilar("twoTheta",names[i])) {
+        key = "firstTwoThetaValues" + DEFAULT_EXT;
+      }
+      else {
+        if (isSimilar("psi",names[i])) {
+          key = "firstPsiValues" + DEFAULT_EXT;
+        }
+        else {
+          key = "firstQValues" + DEFAULT_EXT;
+        }
+      }
+      // register the spectrum
+      Ext.setDoubleSpectrumKey(key);
+      Ext.setDoubleSpectrum(firstQValues);
+      spectrumLists[i] = key;
+    }
+  }
+}
+result = "";
+for (i=0; i < lengthOf(spectrumLists); i++) {
+  // ignore empty results
+  if (lengthOf(spectrumLists[i]) > 0) {
+    if (lengthOf(result) > 0) {
+      result = result + "\n";
+    }
+    name = names[i];
+    if (lengthOf(realNames[i]) > 0) {
+      name = realNames[i];
+    } else {
+      name = name + "(Global)";
+    }
+    result = result + name + "Sum:" + spectrumLists[i];
+  }
+}
+if (isTest) print("Result:\n----------\n" + result + "\n----------");
+return result;
+
+
+// ///////// //
+// FUNCTIONS //
+// ///////// //
+
+// function that splits a global macro argument in sub arguments
+function splitArguments(globalArgument) {
+  if (lengthOf(globalArgument) == 0) {
+    exit("splitArguments : Argument is not valid");
+  }
+  else {
+    splited = split(globalArgument,"#####");
+    return splited;
+  }
+}
+
+// function that splits a global macro argument in sub arguments
+function splitParameterList(parameter, index) {
+  if (lengthOf(parameter) == 0) {
+    exit("splitParameterList : Argument " + index + " is not valid");
+  }
+  else {
+    splited = split(parameter,"\n");
+    return splited;
+  }
+}
+
+// function that extracts and returns an array of length 2, containing the name of the argument as 1st value, and the corresponding key as 2nd
+function extractNameAndKey(stringArgument, index) {
+  if (lengthOf(stringArgument) == 0) {
+    exit("extractKey : Argument " + index + " is not valid");
+  }
+  else {
+    separatorIndex = indexOf(stringArgument, ":");
+    if (separatorIndex < 1) {
+      exit("extractKey : Argument " + index + " is not correctly formatted");
+    }
+    else {
+      result = newArray(2);
+      length = lengthOf(stringArgument);
+      result[0] = substring(stringArgument,0,separatorIndex);
+      result[0] = "" + trimString(result[0]);
+      result[0] = replace(result[0], "/circles_[0-9]+", "");
+      result[0] = replace(result[0], "/tiltedCircles_[0-9]+", "");
+      result[0] = replace(result[0], "/projection_[0-9]+", "");
+      result[0] = replace(result[0], "/projectionX_[0-9]+", "");
+      result[0] = replace(result[0], "/projectionY_[0-9]+", "");
+      result[0] = replace(result[0], "/projectionZ_[0-9]+", "");
+      result[0] = replace(result[0], "/meanProjection_[0-9]+", "");
+      result[0] = replace(result[0], "/meanProjectionX_[0-9]+", "");
+      result[0] = replace(result[0], "/meanProjectionY_[0-9]+", "");
+      result[0] = replace(result[0], "/meanProjectionZ_[0-9]+", "");
+      result[0] = replace(result[0], "/integral2D_[0-9]+", "");
+      result[0] = replace(result[0], "/azimAt2Theta_[0-9]+", "");
+      result[0] = replace(result[0], "/azimAtQ_[0-9]+", "");
+      result[0] = replace(result[0], "/centerOfMass_[0-9]+", "");
+      result[1] = substring(stringArgument,separatorIndex+1,length);
+      result[1] = "" + trimString(result[1]);
+      return result;
+    }
+  }
+}
+
+// function that extracts and returns the key value of an argument
+function extractKey(stringArgument, index) {
+  if (lengthOf(stringArgument) == 0) {
+    exit("extractKey : Argument " + index + " is not valid");
+  }
+  else {
+    separatorIndex = indexOf(stringArgument, ":");
+    if (separatorIndex < 1) {
+      exit("extractKey : Argument " + index + " is not correctly formatted");
+    }
+    else {
+      length = lengthOf(stringArgument);
+      return substring(stringArgument,separatorIndex+1,length);
+    }
+  }
+}
+
+// function that extracts and returns the int value of an argument
+function extractIntScalar(stringArgument, index) {
+  if (lengthOf(stringArgument) == 0) {
+    exit("extractIntScalar : Argument " + index + " is not valid");
+  }
+  else {
+    splited = split(stringArgument,":");
+    if (lengthOf(splited) != 2) {
+      exit("extractIntScalar : Argument " + index + " is not correctly formatted");
+    }
+    else {
+      value = splited[1];
+      result = parseInt(value);
+      if ( isNaN(result) ) {
+        exit("extractIntScalar : Argument " + index + " is not correctly formatted");
+      }
+      return result;
+    }
+  }
+}
+
+// function that extracts and returns the float value of an argument
+function extractFloatScalar(stringArgument, index) {
+  if (lengthOf(stringArgument) == 0) {
+    exit("extractFloatScalar : Argument " + index + " is not valid");
+  }
+  else {
+    splited = split(stringArgument,":");
+    if (lengthOf(splited) != 2) {
+      exit("extractFloatScalar : Argument " + index + " is not correctly formatted");
+    }
+    else {
+      value = splited[1];
+      result = parseFloat(value);
+      if ( isNaN(result) ) {
+        exit("extractFloatScalar : Argument " + index + " is not correctly formatted");
+      }
+      return result;
+    }
+  }
+}
+
+// function that extracts and returns the boolean value of a string argument
+function extractBooleanScalar(stringArgument, index) {
+  if (lengthOf(stringArgument) == 0) {
+    exit("extractBooleanScalar : Argument " + index + " is not valid");
+  }
+  else {
+    splited = split(stringArgument,":");
+    if (lengthOf(splited) != 2) {
+      exit("extractBooleanScalar : Argument " + index + " is not correctly formatted");
+    }
+    else {
+      value = splited[1];
+      result = (value=="true");
+      return result;
+    }
+  }
+}
+
+//function that looks in the array for the index of the specified value 
+function getIndex(array, value) {
+  length = lengthOf(array);
+  found = false;
+  index = -1;
+  for (i = 0; (i < length) && (found == false); i++) {
+    if (array[i] == value) {
+      index = i;
+      found = true;
+    }
+  }
+  return index;
+}
+
+//function that looks in the array for the index of the specified value 
+function getIndexDicho(sortedArray, value) {
+  length = lengthOf(sortedArray);
+  found = false;
+  index = -1;
+  b = 0;
+  e = length - 1;
+  do {
+    i = (b + e) / 2;
+    if (sortedArray[i] == value) {
+      found = true;
+      index = i;
+    }
+    else {
+      if (sortedArray[i] < value) {
+        b = i + 1;
+      }
+      else {
+        e = i + 1;
+      }
+    }
+  }
+  while (b < e && !found);
+  return index;
+}
+
+function floatArrayToString(array) {
+  result = "";
+  length = lengthOf(array);
+  for (i=0; i < length; i++) {
+    if (i > 0) {
+      result = result +";";
+    }
+    result = result + array[i];
+  }
+  return result;
+}
+
+function sum(name, spectrumList) {
+  if (lengthOf(spectrumList) == 0) return "";
+  result = "";
+  spectrumArray = splitParameterList(spectrumList,name);
+  spectrumCount = lengthOf(spectrumArray);
+  temp = 0.5;
+  Ext.setDoubleSpectrumKey(spectrumArray[0]);
+  Ext.getDoubleSpectrumLength(temp);
+  length = temp;
+  spectrum = newArray(length);
+  for (i=0; i < length; i++) {
+    Ext.setDoubleSpectrumIndex(i);
+    Ext.getDoubleValueAtSelectedSpectrumIndex(temp);
+    spectrum[i] = temp;
+  }
+  for (si=1; si < spectrumCount; si++) {
+    // try to sum spectra
+    Ext.setDoubleSpectrumKey(spectrumArray[si]);
+    Ext.getDoubleSpectrumLength(temp);
+    tempLength = temp;
+    tempArray = split(spectrumArray[si],";");
+    if (tempLength != length) {
+      // incompatible spectra : exit
+      th = "th";
+      if (si == 1) {
+        th = "nd";
+      }
+      exit("The " + (si+1) + th + " spectrum of name similar to \"" + name + "\" is not compatible with other ones:\nIts length is " + tempLength + " instead of " + length);
+    }
+    else {
+      // sum spectra
+      for (i=0; i < length; i++) {
+        Ext.setDoubleSpectrumIndex(i);
+        Ext.getDoubleValueAtSelectedSpectrumIndex(temp);
+        spectrum[i] = spectrum[i] + temp;
+      }
+    }
+  }
+  key = name + DEFAULT_EXT;
+  // register the spectrum
+  Ext.setDoubleSpectrumKey(key);
+  Ext.setDoubleSpectrum(spectrum);
+  // return the key
+  return key;
+}
+
+function quadraticSum(name, spectrumList) {
+  if (lengthOf(spectrumList) == 0) return "";
+  result = "";
+  spectrumArray = splitParameterList(spectrumList,name);
+  spectrumCount = lengthOf(spectrumArray);
+  temp = 0.5;
+  Ext.setDoubleSpectrumKey(spectrumArray[0]);
+  Ext.getDoubleSpectrumLength(temp);
+  length = temp;
+  spectrum = newArray(length);
+  for (i=0; i < length; i++) {
+    Ext.setDoubleSpectrumIndex(i);
+    Ext.getDoubleValueAtSelectedSpectrumIndex(temp);
+    spectrum[i] = square(temp);
+  }
+  for (si=1; si < spectrumCount; si++) {
+    // try to sum spectra squares
+    Ext.setDoubleSpectrumKey(spectrumArray[si]);
+    Ext.getDoubleSpectrumLength(temp);
+    tempLength = temp;
+    if (tempLength != length) {
+      // incompatible spectra : exit
+      th = "th";
+      if (si == 1) {
+        th = "nd";
+      }
+      exit("The " + (si+1) + th + " spectrum of name similar to \"" + name + "\" is not compatible with other ones:\nIts length is " + tempLength + " instead of " + length);
+    }
+    else {
+      // sum spectra squares
+      for (i=0; i < length; i++) {
+        Ext.setDoubleSpectrumIndex(i);
+        Ext.getDoubleValueAtSelectedSpectrumIndex(temp);
+        spectrum[i] = spectrum[i] + square(temp);
+      }
+    }
+  }
+  // Ones square sum is done, divide its square root by the number of spectra
+  for (i=0; i < length; i++) {
+    spectrum[i] = sqrt(spectrum[i]);
+  }
+  key = name + DEFAULT_EXT;
+  // register the spectrum
+  Ext.setDoubleSpectrumKey(key);
+  Ext.setDoubleSpectrum(spectrum);
+  // return the key
+  return key;
+}
+
+function isSimilar(name1, name2) {
+  return ( (indexOf(name2,name1) == 0) || (indexOf(name1,name2) == 0) );
+}
+
+function trimString(stringToTrim) {
+  result = "" + stringToTrim;
+  while ( startsWith(result, " ")
+          || startsWith(result, "\t")
+          || startsWith(result, "\r")
+          || startsWith(result, "\n") ) {
+    length = lengthOf(result);
+    result = substring(result, 1, length);
+  }
+  while ( endsWith(result, " ")
+          || endsWith(result, "\t")
+          || endsWith(result, "\r")
+          || endsWith(result, "\n") ) {
+    length = lengthOf(result);
+    result = substring(result, 0, length - 1);
+  }
+  return result;
+}
+
+function square(value) {
+  return (value*value);
+}

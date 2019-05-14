@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<VLDocking version="2.1">
+<DockingDesktop name="">
+<DockingPanel>
+<Split orientation="0" location="0.7877263581488934">
+<Split orientation="1" location="0.5050829320492242">
+<Split orientation="0" location="0.038510911424903725">
+<Dockable>
+<Key dockName="imageToolbar"/>
+</Dockable>
+<Split orientation="1" location="0.35851063829787233">
+<Dockable>
+<Key dockName="fileView"/>
+</Dockable>
+<Split orientation="0" location="0.8563758389261745">
+<Dockable>
+<Key dockName="imageViewer"/>
+</Dockable>
+<Dockable>
+<Key dockName="positionView"/>
+</Dockable>
+</Split>
+</Split>
+</Split>
+<Split orientation="0" location="0.038510911424903725">
+<Dockable>
+<Key dockName="operationToolbar"/>
+</Dockable>
+<Split orientation="1" location="0.3279044516829533">
+<Dockable>
+<Key dockName="operationTree"/>
+</Dockable>
+<Split orientation="0" location="0.789261744966443">
+<Split orientation="1" location="0.6504065040650406">
+<TabbedDockable>
+<Dockable>
+<Key dockName="operationViewer"/>
+</Dockable>
+<Dockable>
+<Key dockName="resultCurves"/>
+</Dockable>
+</TabbedDockable>
+<Dockable>
+<Key dockName="fitResultParams"/>
+</Dockable>
+</Split>
+<Dockable>
+<Key dockName="userMacrosViewer"/>
+</Dockable>
+</Split>
+</Split>
+</Split>
+</Split>
+<Dockable>
+<Key dockName="logView"/>
+</Dockable>
+</Split>
+</DockingPanel>
+<TabGroups>
+<TabGroup>
+<Dockable>
+<Key dockName="operationViewer"/>
+</Dockable>
+<Dockable>
+<Key dockName="resultCurves"/>
+</Dockable>
+</TabGroup>
+</TabGroups>
+</DockingDesktop>
+</VLDocking>

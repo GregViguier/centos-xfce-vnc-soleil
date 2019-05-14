@@ -1,0 +1,71 @@
+
+ ---------
+| Windows |
+ ---------
+Requirements: 
+    Java 7 or 8
+
+-> Launch foxtrot.bat
+
+ -------
+| Linux |
+ -------
+Requirements:
+ - Java 7 or 8
+ - Python 2.7 with h5py module
+
+Debian/Ubuntu:
+  Download required libraries:
+    sudo apt-get install default-jre
+    sudo apt-get install python-h5py
+  If, for some reason, you didn't get java 7 or 8, or previous step didn't work, update your distribution:
+    sudo apt-get update
+    sudo apt-get upgrade
+  And then download required libraries again
+
+
+Please, make sure that foxtrot.sh, extractor.sh (located in python folder), and any ".sh" file in resources/tools folder, are executable.
+If that's not the case: chmod +x <filename>
+
+-> Launch foxtrot.sh
+
+ -----
+| Mac |
+ -----
+Requirements:
+ - Java 7 or 8 (see STEP 1)
+ - Python 2.7 with h5py module (see STEP 2)
+
+
+STEP 0:
+If you installed a too recent version of Java (9, 10, etc.), foxtrot might not work properly, and you will have to uninstall Java first.
+Since Java 9, a lot of things changed in Java, and backward compatibility is no more fully assured.
+This is why you might need to uninstall too recent versions of Java.
+To do so, you will have to follow instructions detailed at these pages (follow both instructions):
+- Uninstall Java/JRE: https://www.java.com/en/download/help/mac_uninstall_java.xml (section "Uninstall Oracle Java using the Terminal")
+- Uninstall Java/JDK: https://docs.oracle.com/javase/8/docs/technotes/guides/install/mac_jdk.html#A1096903 (section "Uninstalling the JDK")
+
+
+STEP 1:
+Download and install Java JDK 7 or 8 (not JRE) from Oracle website.
+http://www.oracle.com/technetwork/java/javase/downloads/index.html
+
+
+STEP 1:
+In order to have the python extractor working:
+Install Anaconda (python 2.7) as suggested here: http://docs.h5py.org/en/latest/build.html
+
+
+STEP 2:
+Please, make sure that foxtrot.command, extractor.sh (located in python folder), and any ".command" file in resources/tools folder, are executable.
+If that's not the case: chmod +x <filename>
+
+
+STEP 3:
+-> Launch foxtrot.command
+
+ -----
+| All |
+ -----
+- To activate 2Theta, edit the python script (python/extractor.py) and comment lines 146 and 147
+- You can customize your application parameters (like the context data folder), by changing the values in "User Parameters" section

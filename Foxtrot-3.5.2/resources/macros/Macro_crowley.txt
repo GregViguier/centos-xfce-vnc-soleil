@@ -1,0 +1,4 @@
+run("loadmask","/home/viguier/Work/AutoBioSAXS/SES_TEST_RUCHE/20081980/2017/Run1/Hercules/mask_crowley_jan2018.txt");
+
+run("azimuthalIntegration","(abscissaStep=1.0,stepType=Px,sigmaType=MAX,xRefined=false,pixelSplit=false,normalize=true,mi=[i11-c-c09__DT__MI_DIODE.8a__#2],normalizationFactor=1.0)");
+

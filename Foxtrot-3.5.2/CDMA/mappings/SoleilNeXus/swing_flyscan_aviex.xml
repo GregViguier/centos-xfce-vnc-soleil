@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map-def SYSTEM "../../dtd/mapping_file.dtd">
+<map-def name="SWING_FLYSCAN_AVIEX" version="1.0.0">
+  <item key="acquisition_sequence">
+    <path>/</path>
+    <call>CreateVirtualItem</call>
+  </item>
+  <item key="acquisition_origin">
+    <path>/{NXinstrument}</path>
+    <call>CreateVirtualItem</call>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="camera">
+    <path>/{NXinstrument}/Aviex{NXdetector}</path>
+    <call>CreateVirtualItem</call>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="dark">
+    <path>/{NXinstrument}/Aviex{NXdetector}/intensityBlack</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="distance">
+    <path>/{NXinstrument}/Aviex{NXdetector}/distance</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="exposureTime">
+    <path>/{NXinstrument}/Aviex{NXdetector}/exposure_time</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="detectorGain">
+    <path>/{NXinstrument}/Aviex{NXdetector}/gain_ph_per_ADU</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="shutterCloseDelay">
+    <path>/{NXinstrument}/Aviex{NXdetector}/shutter_close_delay</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="detectorBias">
+    <path>/{NXinstrument}/Aviex{NXdetector}/bias</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="pixelSize">
+    <path>/{NXinstrument}/Aviex{NXdetector}/pixel_size_x</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="xBin">
+    <path>/{NXinstrument}/Aviex{NXdetector}/binning_x</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="zBin">
+    <path>/{NXinstrument}/Aviex{NXdetector}/binning_y</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="x0">
+    <path>/{NXinstrument}/Aviex{NXdetector}/dir_beam_x</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="z0">
+    <path>/{NXinstrument}/Aviex{NXdetector}/dir_beam_z</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="mi">
+   <path>/scan_data{NXdata}/averageSAI*</path>
+    <call>CreateVirtualItem</call>
+    <call>EquipmentAsSelf</call>
+  </item>
+  <item key="intensity">
+   <path>/scan_data{NXdata}/averageSAI*</path>
+    <call>EquipmentAsSelf</call>
+  </item>
+  <item key="lambda">
+    <path>/{NXinstrument}/{NXmonochromator}/wavelength</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="energy">
+    <path>/{NXinstrument}/{NXmonochromator}/energy</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="images">
+    <!-- the core will try to open that path, but won't succeed -->
+    <path>/{NXdata}/*@interpretation=imag*</path>
+    <!-- that method will get the previous path from context, will split the attribute section from the 
+      path to filter on that attribute name and value -->
+    <call>AttributeFilter</call>
+    <call>HarvestSignalAttributes</call>
+    <attribute name="equipment">
+      <path>/{NXinstrument}/Aviex{NXdetector}</path>
+      <call>HarvestEquipmentAttributes</call>
+    </attribute>
+    <attribute name="interpretation" value="image"/>
+  </item>
+  <item key="comments">
+    <path>/{NXsample}/comments/data</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+</map-def>

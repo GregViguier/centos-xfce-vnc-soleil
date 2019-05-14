@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+	USAGE OF THIS FILE:
+	
+	This file contains the formulas that will be used in the Foxtrot and ImageReducer Charts.
+	Its usage is simple. The formulas must be contained within a the "root" tag (i.e between <root> and </root>).
+	Each formula is delimited by the <formula> tag. This tag has only one attribute, the "name" attribute. This name
+	will be used to be displayed in the combo-box that allows the user to selected which transformation he wants to apply
+	to the curves.
+	
+	Within the <formula> tag, there must be at least 2 <value> tag:
+		- One for the transformation of the abscissa.
+		- One for the transformation of the ordinate.
+	There is only one attribute possible for the <value> tag, which is the "id" attribute. There are, for this attribute, 
+	only 2 possible values which are "X" or "Y" (in capital letters). This attribute will set if the formula contained between 
+	the <value> tag stands for, respectively, the abscissa or the ordinate.
+	Within the <value> tags, any mathematical formula can be used. For further information about the syntax, please refer to the 
+	expression evaluation help provided in the chart when right clicking on it then selecting the "Evaluate an expression" item in 
+	the pop-up menu.
+	In this expression, "X" refers to the abscissa, and "Y" refers to the ordinate. It is possible to use variables (or parameters) 
+	obtained from Fits. To use them, simply put the parameter name you want to use in the formula EXACTLY AS IT IS WRITTEN (it is case sensitive)
+	in the "Fit Result Params" view of Foxtrot or Image Reducer (in the table header). The used parameters have to be declared in the formula within
+	<parameter> tags.
+	
+	The <parameter> tags have no attributes, just a value. This value must be the name of the parameter used in the Fit with EXACTLY THE SAME CASE as it
+	is displayed in the table header.
+	
+	Finally, an example of an implementation of this file with the "Renormalized Kratky plot" which formula is "Y*X*X*Rg*Rg/I0_ VERSUS X*Rg" (the logic used here is
+	Y VERSUS X for a normal outline with no data transformation). To use this example, you just have to uncomment the formula.
+-->
+
+<root>
+
+	<!--
+		<formula name="Renormalized Kratky plot">
+			<parameter>I0_</parameter>
+			<parameter>Rg</parameter>
+			<value id="Y">Y*X*X*Rg*Rg/I0_</value>
+			<value id="X">X*Rg</value>
+		</formula>
+	-->
+	
+	<formula name="Y VS X²">
+		<value id="Y" label="Y">Y</value>
+		<value id="X" label="X*X">X*X</value>
+	</formula>
+	
+	<formula name="Y*X VS X">
+		<value id="Y" label="Y*X">Y*X</value>
+		<value id="X" label="X">X</value>
+	</formula>
+	
+	<formula name="Y*X² VS X">
+		<value id="Y" label="Y*X*X">Y*X^2</value>
+		<value id="X" label="X">X</value>
+	</formula>
+	
+	<formula name="Y*X^4 VS X">
+		<value id="Y" label="Y*X^4">Y*X^4</value>
+		<value id="X" label="X">X</value>
+	</formula>
+
+	<formula name="Renormalized Kratky plot">
+		<parameter>I0</parameter>
+		<parameter>Rg</parameter>
+		<value id="Y" label="Y*X*X*Rg*Rg/I0_">Y*X*X*Rg*Rg/I0</value>
+		<value id="X" label="X*Rg">X*Rg</value>
+	</formula>
+</root>

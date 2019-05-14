@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map-def SYSTEM "../../dtd/mapping_file.dtd">
+<map-def name="EDF" version="1.0.0">
+  <item key="acquisition_sequence">
+    <path>/</path>
+    <call>CreateVirtualItem</call>
+  </item>
+  <item key="stack_name">
+    <path>fileName</path>
+  </item>
+  <item key="camera">
+    <path>Aviex</path>
+  </item>
+  <item key="distance">
+    <path>SampleDistance</path>
+    <call param="1000">ApplyCorrectionFactor</call>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="exposureTime">
+    <path>ExposureTime</path>
+    <call param="1000">ApplyCorrectionFactor</call>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="shutterCloseDelay">
+    <path>ShutterCloseDelay</path>
+    <call param="1000">ApplyCorrectionFactor</call>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="xBin">
+    <path>Xbin</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="zBin">
+    <path>Zbin</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="pixelSize">
+    <path>PSize_1</path>
+    <call>HarvestEquipmentAttributes</call>
+    <call param="1000000">ApplyCorrectionFactor</call>
+  </item>
+  <item key="x0">
+    <path>Center_1</path>
+  </item>
+  <item key="z0">
+    <path>Center_2</path>
+  </item>
+  <item key="detectorGain">
+    <path>Gain</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="detectorBias">
+    <path>Bias</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="intensity">
+    <path>Intensity*</path>
+    <call>DataItemStacker</call>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="delta0">
+    <path>delta</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="gamma0">
+    <path>gamma</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="mi">
+    <path>Intensity*</path>
+    <call>CreateVirtualItem</call>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="lambda">
+    <path>WaveLength</path>
+    <call param="10000000000">ApplyCorrectionFactor</call>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="energy">
+    <path>Monochromator/energy</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="comments">
+    <path>Sample_comments</path>
+  </item>
+  <item key="images">
+    <path>Image</path>
+    <!-- create a meta dataitem of all found node having the path above -->
+    <call>HarvestEquipmentAttributes</call>
+    <call>DataItemStacker</call>
+    <attribute name="interpretation" value="image" />
+  </item>
+
+  <!-- DataItemStacker for fields that may vary inside a stack, apply to all for safety -->
+  <!-- All keys for header propagation start with capital letter to avoid mixing with the ones above -->
+
+  <!-- common Xeuss / Nano-inXider keywords -->
+  <item key="EDF_DataBlockID">
+    <path>EDF_DataBlockID</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="EDF_BinarySize">
+    <path>EDF_BinarySize</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="EDF_HeaderSize">
+    <path>EDF_HeaderSize</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="ByteOrder">
+    <path>ByteOrder</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="DataType">
+    <path>DataType</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Dim_1">
+    <path>Dim_1</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Dim_2">
+    <path>Dim_2</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Title">
+    <path>title</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Intensity1">
+    <path>Intensity1</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="ExposureTime">
+    <path>ExposureTime</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Dummy">
+    <path>Dummy</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="DDummy">
+    <path>DDummy</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Offset_1">
+    <path>Offset_1</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Offset_2">
+    <path>Offset_2</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Center_1">
+    <path>Center_1</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Center_2">
+    <path>Center_2</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="PSize_1">
+    <path>PSize_1</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="PSize_2">
+    <path>PSize_2</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="SampleDistance">
+    <path>SampleDistance</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="WaveLength">
+    <path>WaveLength</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="HeaderID">
+    <path>HeaderID</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Detector">
+    <path>Detector</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Bsx">
+    <path>bsx</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Bsz">
+    <path>bsz</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Compression">
+    <path>Compression</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Count_time">
+    <path>count_time</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Date">
+    <path>Date</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Run">
+    <path>run</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Ddelta">
+    <path>Delta</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Image">
+    <path>Image</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Om">
+    <path>om</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Phi">
+    <path>phi</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Rx">
+    <path>rx</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Ry">
+    <path>ry</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Size">
+    <path>Size</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="VersionNumber">
+    <path>VersionNumber</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Temperature">
+    <path>Temperature</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="X">
+    <path>x</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Z">
+    <path>z</path>
+    <call>DataItemStacker</call>
+  </item>
+  <!-- Nano-inXider keywords only -->
+  <item key="S1x">
+    <path>s1x</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="S1z">
+    <path>s1z</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="S2x">
+    <path>s2x</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="S2z">
+    <path>s2z</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Cam">
+    <path>cam</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="SumForIntensity1">
+    <path>SumForIntensity1</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Thickness">
+    <path>Thickness</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="IntensityThickness">
+    <path>IntensityThickness</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Concentration">
+    <path>Concentration</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="BeamstopTransmission">
+    <path>BeamstopTransmission</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="RetriggerMode">
+    <path>RetriggerMode</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="SampleName">
+    <path>SampleName</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Comment">
+    <path>Comment</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="BeamstopPosition">
+    <path>BeamstopPosition</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Resolution">
+    <path>Resolution</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Zp">
+    <path>zp</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Gamma">
+    <path>Gamma</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Psi">
+    <path>psi</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="History_1">
+    <path>History-1</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Force">
+    <path>Force</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Velocity">
+    <path>Velocity</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Stretch">
+    <path>Stretch</path>
+    <call>DataItemStacker</call>
+  </item>
+  <!-- Xeuss keywords only -->
+  <item key="RasterOrientation">
+    <path>RasterOrientation</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="History-1">
+    <path>History-1</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Monitor">
+    <path>Monitor</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Det">
+    <path>det</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Detx">
+    <path>detx</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Detz">
+    <path>detz</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Fil">
+    <path>fil</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Pilct0">
+    <path>pilct0</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Pilct1">
+    <path>pilct1</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Pilroi0">
+    <path>pilroi0</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Pilroi1">
+    <path>pilroi1</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Pil_Roi0">
+    <path>Pil_Roi0</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="S1bot">
+    <path>s1bot</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="S1hl">
+    <path>s1hl</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="S1hr">
+    <path>s1hr</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="S1top">
+    <path>s1top</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="S2bot">
+    <path>s2bot</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="S2hl">
+    <path>s2hl</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="S2hr">
+    <path>s2hr</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="S2top">
+    <path>s2top</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="S3bot">
+    <path>s3bot</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="S3hl">
+    <path>s3hl</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="S3hr">
+    <path>s3hr</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="S3top">
+    <path>s3top</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="SaxsDataVersion">
+    <path>SaxsDataVersion</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Sec">
+    <path>sec</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Dual">
+    <path>dual</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Tst-force">
+    <path>tst-force</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Tst-speed">
+    <path>tst-speed</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="Rh95-hum">
+    <path>rh95-hum</path>
+    <call>DataItemStacker</call>
+  </item>
+  <item key="As-sample">
+    <path>as-sample</path>
+    <call>DataItemStacker</call>
+  </item>
+</map-def>

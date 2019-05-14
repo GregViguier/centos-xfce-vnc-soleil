@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map-def SYSTEM "../../dtd/mapping_file.dtd">
+<map-def name="ANTARES_FLYSCAN" version="1.0.0">
+  <item key="acquisition_sequence">
+    <path>/</path>
+    <call>CreateVirtualItem</call>
+  </item>
+  <item key="acquisition_origin">
+    <path>/{NXinstrument}</path>
+    <call>CreateVirtualItem</call>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="scienta">
+    <path>/{NXinstrument}/{NXdetector}/fixEnergy/data</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="lambda">
+    <path>/{NXinstrument}/{NXintensity_monitor}/Gain</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="energy">
+    <path>/{NXinstrument}/{NXintensity_monitor}/intensity</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="energyScale">
+    <path>/{NXinstrument}/{NXdetector}/energyScale/data</path>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="x_position">
+    <path>/{NXdata}/Tx</path>
+    <call>DataItemStacker</call>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="y_position">
+    <path>/{NXdata}/Tz</path>
+    <call>DataItemStacker</call>
+    <call>HarvestEquipmentAttributes</call>
+  </item>
+  <item key="spectra">
+    <path>/{NXdata}/data1</path>
+    <call>DataItemStacker</call>
+    <call>HarvestEquipmentAttributes</call>
+    <attribute name="interpretation" value="spectrum" />
+  </item>
+  <item key="images">
+    <path>/{NXdata}/*image*</path>
+    <call>DataItemStacker</call>
+    <call>HarvestEquipmentAttributes</call>
+    <attribute name="interpretation" value="image" />
+  </item>
+  <item key="comments">
+    <path>/{NXsample}/comments/data</path>
+  </item>
+</map-def>

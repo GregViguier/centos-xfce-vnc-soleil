@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Foxtrot
+Comment=
+Exec=/apps/Foxtrot/foxtrot.sh
+Icon=/headless/icons/foxtrot.png
+Path=
+Terminal=false
+StartupNotify=false

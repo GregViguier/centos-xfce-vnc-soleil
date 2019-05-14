@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Orange
+Comment=
+Exec=orange-canvas
+Icon=/headless/icons/orange.jpg
+Path=
+Terminal=false
+StartupNotify=false
