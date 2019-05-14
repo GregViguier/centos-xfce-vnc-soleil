@@ -11,8 +11,8 @@ The Docker image is installed with the following components:
   * Mozilla Firefox
   * Chromium
 * Foxtrot (SAXS datareduction software)
+* Global Reducer (Tomography datareduction software)
 * Orange
-* Global Reducter (Tomography datareduction software)
 
 ![Docker VNC Desktop access via HTML page](.pics/vnc_container_view.png)
 
