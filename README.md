@@ -2,7 +2,7 @@
 
 This repository contains Synchrotron SOLEIL's Docker Image. This is heavily based on Consol's Docker images.
 
-Each Docker image is installed with the following components:
+The Docker image is installed with the following components:
 
 * Desktop environment [**Xfce4**](http://www.xfce.org)
 * VNC-Server (default VNC port `5901`)
@@ -13,6 +13,7 @@ Each Docker image is installed with the following components:
 * Foxtrot (SAXS datareduction software)
 * Orange
 * Global Reducter (Tomography datareduction software)
+
 ![Docker VNC Desktop access via HTML page](.pics/vnc_container_view.png)
 
 ## Build Status
