@@ -17,7 +17,7 @@ The Docker image is installed with the following components:
 ![Docker VNC Desktop access via HTML page](.pics/vnc_container_view.png)
 
 ## Build Status
-(![Docker Automated build](https://img.shields.io/docker/automated/gregviguier/centos-xfce-vnc-soleil.svg)
+![Docker Automated build](https://img.shields.io/docker/automated/gregviguier/centos-xfce-vnc-soleil.svg)
 
 
 
