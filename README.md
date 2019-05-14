@@ -17,7 +17,9 @@ The Docker image is installed with the following components:
 ![Docker VNC Desktop access via HTML page](.pics/vnc_container_view.png)
 
 ## Build Status
-`master`:  [![Build Status MASTER](https://travis-ci.org/ConSol/docker-headless-vnc-container.svg?branch=master)](https://travis-ci.org/ConSol/docker-headless-vnc-container)
+[![Build Status](
+https://dockerbuildbadges.quelltext.eu/status.svg?organization=gregviguier&repository=centos-xfce-vnc-soleil)]()
+
 
 
 
